@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AntlrPuml": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\GitControlledSources\\TestGenerator\\ir.IASC.sample"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@startuml
+namespace iasc.core  {
+abstract BaseEntity #FFFFDD
+interface Interface
+abstract AbstractClass
+class TestClass
+
+TestClass : +string FirstName_Public
+TestClass : +string LastName
+TestClass : -string ID_private
+TestClass : ~string PostName_internal
+TestClass : #string ThePostName_protected
+
+BaseEntity : +string ToString()
+
+class Car
+TestClass <|-- Car
+
+BaseEntity <|-- TestClass
+
+
+Competency --|> BaseEntity
+
+}
+
+
+
+@enduml

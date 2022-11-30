@@ -1,0 +1,47 @@
+@startuml
+namespace iasc.core  {
+ abstract BaseEntity #FFFFDD
+TestClass --|> BaseEntity :is
+note on link
+  Test Note
+end note
+
+}
+package "IASC.Core" 
+{
+ abstract BaseEntity #FFFFDD
+
+}
+note left
+نوت فارسی
+end note
+package "IASC.Architecture.Enitities"
+{
+interface Interface
+abstract AbstractClass
+class TestClass
+
+TestClass : +string FirstName Public
+TestClass : +string LastName
+TestClass : -string ID private
+TestClass : ~string PostName internal
+TestClass : #string ThePostName protected
+
+class Car 
+TestClass <|-- Car
+
+BaseEntity <|-- TestClass
+
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
+
+Competency --|> BaseEntity
+
+note on link
+  generate=true
+end note
+}
+
+
+@enduml

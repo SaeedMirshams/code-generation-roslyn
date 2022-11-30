@@ -54,5 +54,11 @@ namespace CodeGenerationUml
                                              from name in Identifier
                                              from bracket in StartBracket.Optional()
                                              select name;
+
+        public static Parser<String> AbstractClass = from keyword in Parse.String("abstarct")
+                                             from name in Identifier
+                                             from bracket in StartBracket.Optional()
+                                             select name;
+
     }
 }
