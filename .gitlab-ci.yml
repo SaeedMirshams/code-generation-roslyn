@@ -1,0 +1,19 @@
+variables:
+
+    
+stages:
+    - publish
+
+
+publish:
+  stage: publish
+  script:
+    - call SetVersion.bat Codegenerator 
+    - set
+    - echo git tag %CI_PIPELINE_ID% master
+    - echo sed -i 's/9999/%CI_PIPELINE_ID%/g' SCM\SCM\Properties\AssemblyInfo.cs
+    - call commitversion.bat Codegenerator %version_ci%
+  only:
+  - master
+  - Release
+    
