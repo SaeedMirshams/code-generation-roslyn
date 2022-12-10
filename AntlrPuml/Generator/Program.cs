@@ -1,4 +1,5 @@
 ﻿using Antlr4.Runtime;
+using Antlr4.Runtime.Atn;
 using Antlr4.Runtime.Tree;
 using iasco.puml;
 
@@ -12,7 +13,7 @@ internal class Program
         Console.WriteLine("*   To convert specify a .plantUml file or a directory                     *");
         Console.WriteLine("*           To Clean Architecure Solution                                  *");
         Console.WriteLine("****************************************************************************");
-
+        bool Forced=args.Length > 0&& args.Contains("-f");
 
         var text = File.ReadAllText("model.md");
 
@@ -24,7 +25,7 @@ internal class Program
         var stream = CharStreams.fromString(text);
         var lexer = new PlantUMLGrammerLexer(stream);
         var tokens = new CommonTokenStream(lexer);
-        var parser = new PlantUMLGrammerParser(tokens) { BuildParseTree = true };
+        var parser = new PlantUMLGrammerParser(tokens) { BuildParseTree = true/*,Trace=true*/};
 
         var parseTree = parser.file();
         var listener = new PlantUMlGrammerListener();
@@ -36,6 +37,7 @@ internal class Program
             foreach (var cls in namespaceDto.Classes)
             {
                 cls.NameSpace = namespaceDto.Name;
+                cls.Forced=Forced;
                 cls.GenerateEntity();
                 cls.GenerateBriefDtos();
                 cls.GenerateDtos();

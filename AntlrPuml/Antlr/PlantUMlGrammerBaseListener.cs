@@ -72,6 +72,54 @@ public partial class PlantUMLGrammerBaseListener : IPlantUMLGrammerListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitType_definition([NotNull] PlantUMLGrammerParser.Type_definitionContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.enum_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterEnum_def([NotNull] PlantUMLGrammerParser.Enum_defContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitEnum_def([NotNull] PlantUMLGrammerParser.Enum_defContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.field_def_block"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterField_def_block([NotNull] PlantUMLGrammerParser.Field_def_blockContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.field_def_block"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitField_def_block([NotNull] PlantUMLGrammerParser.Field_def_blockContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.field_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterField_def([NotNull] PlantUMLGrammerParser.Field_defContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.field_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitField_def([NotNull] PlantUMLGrammerParser.Field_defContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.method_field"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterMethod_field([NotNull] PlantUMLGrammerParser.Method_fieldContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.method_field"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitMethod_field([NotNull] PlantUMLGrammerParser.Method_fieldContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.class_def"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
@@ -83,6 +131,54 @@ public partial class PlantUMLGrammerBaseListener : IPlantUMLGrammerListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitClass_def([NotNull] PlantUMLGrammerParser.Class_defContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.streotype_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterStreotype_def([NotNull] PlantUMLGrammerParser.Streotype_defContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.streotype_def"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitStreotype_def([NotNull] PlantUMLGrammerParser.Streotype_defContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.streotypename"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterStreotypename([NotNull] PlantUMLGrammerParser.StreotypenameContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.streotypename"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitStreotypename([NotNull] PlantUMLGrammerParser.StreotypenameContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.singleline_comment"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterSingleline_comment([NotNull] PlantUMLGrammerParser.Singleline_commentContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.singleline_comment"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitSingleline_comment([NotNull] PlantUMLGrammerParser.Singleline_commentContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.rest_of_line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterRest_of_line([NotNull] PlantUMLGrammerParser.Rest_of_lineContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.rest_of_line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitRest_of_line([NotNull] PlantUMLGrammerParser.Rest_of_lineContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.abstractclass_def"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -275,6 +371,18 @@ public partial class PlantUMLGrammerBaseListener : IPlantUMLGrammerListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitClass_name([NotNull] PlantUMLGrammerParser.Class_nameContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.enum_name"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterEnum_name([NotNull] PlantUMLGrammerParser.Enum_nameContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_name"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitEnum_name([NotNull] PlantUMLGrammerParser.Enum_nameContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.namespace_name"/>.
 	/// <para>The default implementation does nothing.</para>

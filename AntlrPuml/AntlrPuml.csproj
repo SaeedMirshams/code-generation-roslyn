@@ -32,7 +32,7 @@
 </Target>
  
 <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-  <Exec Command="xcopy $(TargetDir)*.* d:\CodeGenerator\ /y" />
+  <Exec Command="xcopy $(TargetDir)*.* d:\CodeGenerator\ /y&#xD;&#xA;del  d:\CodeGenerator\dotnet-puml.exe&#xD;&#xA;copy d:\CodeGenerator\antlrpuml.exe d:\CodeGenerator\dotnet-puml.exe " />
 </Target>
 
 </Project>

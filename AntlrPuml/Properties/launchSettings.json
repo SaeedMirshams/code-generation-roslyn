@@ -2,6 +2,7 @@
   "profiles": {
     "AntlrPuml": {
       "commandName": "Project",
+      "commandLineArgs": "-f",
       "workingDirectory": "D:\\GitControlledSources\\TestGenerator\\ir.IASC.sample"
     }
   }

@@ -9,7 +9,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\" + Name + ".cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -43,7 +43,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\" + Name + "BriefDto.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -75,7 +75,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\" + Name + "Dto.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -109,7 +109,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\" + Name + "Configuration.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -147,7 +147,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Create" + Name + "Command.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -204,7 +204,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Create" + Name + "CommandValidator.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -241,7 +241,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Delete" + Name + "Command.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -293,7 +293,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Delete" + Name + "CommandValidator.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -331,7 +331,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Update" + Name + "Command.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -387,7 +387,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Update" + Name + "CommandValidator.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -423,7 +423,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Get" + Name + "ByIdQuery.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -447,12 +447,12 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine("        }");
         csFile.WriteLine("");
-        csFile.WriteLine($"        public class GetTodoItemByIdQueryHandler : IRequestBaseHandler<Get{Name}sByIdQuery, {Name}Dto>");
+        csFile.WriteLine($"        public class Get{Name}ByIdQueryHandler : IRequestBaseHandler<Get{Name}sByIdQuery, {Name}Dto>");
         csFile.WriteLine("        {");
         csFile.WriteLine($"            private IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> _{Name}Repository;");
         csFile.WriteLine("            private readonly IMapper _mapper;");
         csFile.WriteLine("");
-        csFile.WriteLine($"            public GetTodoItemByIdQueryHandler(IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Get{Name}ByIdQueryHandler(IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine("                _mapper = mapper;");
@@ -485,7 +485,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Get" + Name + "ByIdQueryValidator.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -521,7 +521,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Get" + Name + "sWithPaginationQuery.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;
@@ -588,7 +588,7 @@ public partial class ClassDto
             Directory.CreateDirectory(folderName);
         }
         var fileName = folderName + "\\Get" + Name + "sWithPaginationQueryValidator.cs";
-        if (File.Exists(fileName))
+        if (!Forced && File.Exists(fileName))
         {
             Console.WriteLine($"{fileName} Ignored.");
             return;

@@ -50,11 +50,59 @@ public interface IPlantUMLGrammerVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitType_definition([NotNull] PlantUMLGrammerParser.Type_definitionContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnum_def([NotNull] PlantUMLGrammerParser.Enum_defContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.field_def_block"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitField_def_block([NotNull] PlantUMLGrammerParser.Field_def_blockContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.field_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitField_def([NotNull] PlantUMLGrammerParser.Field_defContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.method_field"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMethod_field([NotNull] PlantUMLGrammerParser.Method_fieldContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.class_def"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitClass_def([NotNull] PlantUMLGrammerParser.Class_defContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.streotype_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitStreotype_def([NotNull] PlantUMLGrammerParser.Streotype_defContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.streotypename"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitStreotypename([NotNull] PlantUMLGrammerParser.StreotypenameContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.singleline_comment"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitSingleline_comment([NotNull] PlantUMLGrammerParser.Singleline_commentContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.rest_of_line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitRest_of_line([NotNull] PlantUMLGrammerParser.Rest_of_lineContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.abstractclass_def"/>.
 	/// </summary>
@@ -151,6 +199,12 @@ public interface IPlantUMLGrammerVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitClass_name([NotNull] PlantUMLGrammerParser.Class_nameContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_name"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnum_name([NotNull] PlantUMLGrammerParser.Enum_nameContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.namespace_name"/>.
 	/// </summary>

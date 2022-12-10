@@ -8,5 +8,5 @@ public partial class ClassDto
     public List<FieldDto> fields { get; set; } = new();
     public string Color { get; internal set; }
     public string NameSpace { get; internal set; }
-        
+    public bool Forced { get; internal set; }
 }

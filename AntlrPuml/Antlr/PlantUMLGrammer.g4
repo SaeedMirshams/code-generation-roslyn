@@ -11,19 +11,42 @@ type_definition
     | abstractclass_def
     | interface_def
     | namespace_def
+    | enum_def
     | class_def
     | extrafield
     | relation
+    | singleline_comment
     ;
  
+enum_def : ENUM SPACE enum_name SPACE? streotype_def? (SPACE color)? field_def_block? ;
 
-class_def : CLASS SPACE class_name (SPACE color)? ;
+field_def_block : AQOLADBAZ field_def* AQOLADBASTE ;
+
+field_def : method_field? (accessor SPACE? fieldType SPACE)? fieldName
+;
+
+method_field: '{method}' 
+            | '{field}' 
+;
+
+
+class_def : CLASS SPACE class_name SPACE? streotype_def? (SPACE color)?  field_def_block?
+           ;
  
+ streotype_def : '<<' streotypename '>>' ;
+
+ streotypename : identifier ;
+
+ singleline_comment : '\'' rest_of_line ;
+
+ rest_of_line 
+ : ~NewLine*
+ ;
 
 abstractclass_def 
-    : ABSTRACT SPACE CLASS SPACE class_name SPACE 
+    : ABSTRACT SPACE CLASS SPACE class_name SPACE? streotype_def? SPACE 
     | ABSTRACT SPACE class_name 
-    | ABSTRACT SPACE class_name SPACE ('#'color)?
+    | ABSTRACT SPACE class_name SPACE? streotype_def? SPACE ('#'color)?
     ;
 
 interface_def
@@ -75,6 +98,9 @@ NAMESPACE : 'namespace' | 'package'
 CLASS : 'class' 
 ;
 
+ENUM : 'enum' 
+;
+
 ABSTRACT : 'abstract' 
  ;
 
@@ -89,6 +115,8 @@ fieldType : identifier ;
 
 
 class_name : Identifier ;
+enum_name : Identifier ;
+
 namespace_name : dotIdentifier;
 
 COLON: ':';
@@ -147,3 +175,4 @@ somethings : .*?
 ;
 
 Unicode : [\p{Letter}] ;
+
