@@ -8,8 +8,6 @@ namespace_def : NAMESPACE SPACE namespace_name SPACE? AQOLADBAZ (type_definition
 
 type_definition
     : note_expr
-    | abstractclass_def
-    | interface_def
     | namespace_def
     | enum_def
     | class_def
@@ -31,6 +29,8 @@ method_field: '{method}'
 
 
 class_def : CLASS SPACE class_name SPACE? streotype_def? (SPACE color)?  field_def_block?
+          | abstractclass_def
+          | interface_def
            ;
  
  streotype_def : '<<' streotypename '>>' ;
@@ -55,9 +55,6 @@ interface_def
 
 color: Color ;
 
-Color : [a-f0-9]+
-      | [A-F0-9]+
-;
 
 extrafield : ownerClass SPACE? COLON SPACE accessor SPACE? fieldType SPACE fieldName
            | ownerClass SPACE? COLON SPACE accessor SPACE? fieldType SPACE fieldName SPACE? '(' SPACE? ')'
@@ -176,3 +173,6 @@ somethings : .*?
 
 Unicode : [\p{Letter}] ;
 
+Color : [a-f0-9]+
+      | [A-F0-9]+
+;

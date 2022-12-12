@@ -18,7 +18,7 @@ public partial class ClassDto
         csFile.WriteLine("using IASC.Core.Entities;");
         csFile.WriteLine("namespace " + NameSpace + ".Domain.Entities");
         csFile.WriteLine("{");
-        csFile.WriteLine("    public class " + Name + " : Entity<" + Name + "IdType>");
+        csFile.WriteLine("    public class " + Name + " : Entity<int>");
         csFile.WriteLine("    {");
         foreach (var field in fields)
         {
@@ -158,7 +158,7 @@ public partial class ClassDto
         csFile.WriteLine("        using IASC.Core.Repositories;");
         csFile.WriteLine($"        using {NameSpace}.Application.DTOs;");
         csFile.WriteLine($"        using {NameSpace}.Domain.Entities;");
-        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persitence;");
+        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persistence;");
         csFile.WriteLine("");
         csFile.WriteLine($"        namespace {NameSpace}.Application.{Name}s.Commands.Create{Name};");
         csFile.WriteLine($"");
@@ -170,11 +170,11 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"        public class Create{Name}CommandHandler : IRequestBaseHandler<Create{Name}Command, {Name}Dto>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<theDbContext, {Name}, {Name}IdType>     _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType>     _{Name}Repository;");
         csFile.WriteLine($"            private readonly IMapper _mapper;");
         csFile.WriteLine($"");
         csFile.WriteLine($"");
-        csFile.WriteLine($"            public Create{Name}CommandHandler(IRepositoryBase<theDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Create{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine($"                _mapper = mapper;");
@@ -185,9 +185,10 @@ public partial class ClassDto
         csFile.WriteLine($"                //var entity = new {Name}" + " { Code= request.Code,Title=request.Title };");
         csFile.WriteLine($"                //var result = await _{Name}Repository.InsertAsync(entity, autoSave: true);");
         csFile.WriteLine($"                //return _mapper.Map<{Name}Dto>(result);");
+        csFile.WriteLine($"                throw new NotImplementedException();");
         csFile.WriteLine("            }");
         csFile.WriteLine("        }");
-
+        
         csFile.Flush();
         csFile.Close();
         csFile.Dispose();
@@ -251,7 +252,7 @@ public partial class ClassDto
         csFile.WriteLine("using IASC.Core.Application.MediatR.Interfaces;");
         csFile.WriteLine("using IASC.Core.Repositories;");
         csFile.WriteLine($"using {NameSpace}.Domain.Entities;");
-        csFile.WriteLine($"using {NameSpace}.Infrastructure.Persitence;");
+        csFile.WriteLine($"using {NameSpace}.Infrastructure.Persistence;");
         csFile.WriteLine("using MediatR;");
         csFile.WriteLine("");
         csFile.WriteLine($"namespace {NameSpace}.Application.{Name}s.Commands.Delete{Name};");
@@ -261,9 +262,9 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"public class Delete{Name}CommandHandler : IRequestBaseHandler<Delete{Name}Command>");
         csFile.WriteLine("{");
-        csFile.WriteLine($"    private IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"    private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
         csFile.WriteLine("");
-        csFile.WriteLine($"    public Delete{Name}CommandHandler(IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> {Name}Repository)");
+        csFile.WriteLine($"    public Delete{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository)");
         csFile.WriteLine("    {");
         csFile.WriteLine($"        _{Name}Repository = {Name}Repository;");
         csFile.WriteLine("    }");
@@ -343,7 +344,7 @@ public partial class ClassDto
         csFile.WriteLine("        using IASC.Core.Repositories;");
         csFile.WriteLine($"        using {NameSpace}.Application.DTOs;");
         csFile.WriteLine($"        using {NameSpace}.Domain.Entities;");
-        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persitence;");
+        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persistence;");
         csFile.WriteLine($"        using MediatR;");
         csFile.WriteLine($"");
         csFile.WriteLine($"        namespace {NameSpace}.Application.{Name}s.Commands.Update{Name};");
@@ -357,10 +358,10 @@ public partial class ClassDto
         csFile.WriteLine($"");
         csFile.WriteLine($"        public class Update{Name}CommandHandler : IRequestBaseHandler<Update{Name}Command, {Name}Dto>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
         csFile.WriteLine($"            private readonly IMapper _mapper;");
         csFile.WriteLine($"");
-        csFile.WriteLine($"            public Update{Name}CommandHandler(IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Update{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine($"                _mapper = mapper;");
@@ -371,6 +372,7 @@ public partial class ClassDto
         csFile.WriteLine($"                //var entity = new {Name} " + "{Id=request.Id, Code = request.Code, Title = request.Title };");
         csFile.WriteLine($"                //var result = await _{Name}Repository.UpdateAsync(entity, autoSave: true);");
         csFile.WriteLine($"                //return _mapper.Map<{Name}Dto>(result);");
+        csFile.WriteLine($"                throw new NotImplementedException();");
         csFile.WriteLine("            }");
         csFile.WriteLine("        }");
 
@@ -435,7 +437,7 @@ public partial class ClassDto
         csFile.WriteLine("        using IASC.Core.Repositories;");
         csFile.WriteLine($"        using {NameSpace}.Application.DTOs;");
         csFile.WriteLine($"        using {NameSpace}.Domain.Entities;");
-        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persitence;");
+        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persistence;");
         csFile.WriteLine("");
         csFile.WriteLine("");
         csFile.WriteLine($"        namespace {NameSpace}.Application.{Name}s.Queries.Get{Name}sWithPagination;");
@@ -449,10 +451,10 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"        public class Get{Name}ByIdQueryHandler : IRequestBaseHandler<Get{Name}sByIdQuery, {Name}Dto>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
         csFile.WriteLine("            private readonly IMapper _mapper;");
         csFile.WriteLine("");
-        csFile.WriteLine($"            public Get{Name}ByIdQueryHandler(IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Get{Name}ByIdQueryHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine("                _mapper = mapper;");
@@ -496,7 +498,7 @@ public partial class ClassDto
         csFile.WriteLine("using FluentValidation;");
         csFile.WriteLine("using IASC.Core.Validation;");
         csFile.WriteLine("");
-        csFile.WriteLine($"namespace {NameSpace}.Application.{Name}.Queries.Get{Name}sWithPagination;");
+        csFile.WriteLine($"namespace {NameSpace}.Application.{Name}s.Queries.Get{Name}sWithPagination;");
         csFile.WriteLine("");
         csFile.WriteLine($"public class Get{Name}sByIdQueryValidator : BaseRequestValidator<Get{Name}sByIdQuery>");
         csFile.WriteLine("{");
@@ -536,7 +538,7 @@ public partial class ClassDto
         csFile.WriteLine("        using IASC.Core.Repositories;");
         csFile.WriteLine($"        using {NameSpace}.Application.DTOs;");
         csFile.WriteLine($"        using {NameSpace}.Domain.Entities;");
-        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persitence;");
+        csFile.WriteLine($"        using {NameSpace}.Infrastructure.Persistence;");
         csFile.WriteLine("        using MediatR;");
         csFile.WriteLine("");
         csFile.WriteLine($"        namespace {NameSpace}.Application.{Name}s.Queries.Get{Name}sWithPagination;");
@@ -551,10 +553,10 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"        public class Get{Name}sWithPaginationQueryHandler : IRequestBaseHandler<Get{Name}sWithPaginationQuery, PaginatedList<{Name}BriefDto>>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
         csFile.WriteLine($"            private readonly IMapper _mapper;");
         csFile.WriteLine("");
-        csFile.WriteLine($"            public Get{Name}sWithPaginationQueryHandler(IRepositoryBase<EvaluationCenterDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Get{Name}sWithPaginationQueryHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine("                _mapper = mapper;");
