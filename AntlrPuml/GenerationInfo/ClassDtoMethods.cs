@@ -18,7 +18,7 @@ public partial class ClassDto
         csFile.WriteLine("using IASC.Core.Entities;");
         csFile.WriteLine("namespace " + NameSpace + ".Domain.Entities");
         csFile.WriteLine("{");
-        csFile.WriteLine("    public class " + Name + " : Entity<int>");
+        csFile.WriteLine("    public class " + Name + " : " + BaseType + "<" + GenericType + ">");
         csFile.WriteLine("    {");
         foreach (var field in fields)
         {
@@ -57,7 +57,7 @@ public partial class ClassDto
 
         csFile.WriteLine("namespace " + NameSpace + ".Application.DTOs;\r\n");
 
-        csFile.WriteLine($"public class {Name}BriefDto : EntityDto<{Name}IdType>,IMapFrom<{Name}>");
+        csFile.WriteLine($"public class {Name}BriefDto : EntityDto<{GenericType}>,IMapFrom<{Name}>");
         csFile.WriteLine("    {");
         csFile.WriteLine("    }");
 
@@ -90,7 +90,7 @@ public partial class ClassDto
         csFile.WriteLine("namespace " + NameSpace + ".Application.DTOs\r\n");
         csFile.WriteLine("{");
 
-        csFile.WriteLine($"public class {Name}Dto : EntityDto<{Name}IdType>,IMapFrom<{Name}>");
+        csFile.WriteLine($"public class {Name}Dto : EntityDto<{GenericType}>,IMapFrom<{Name}>");
         csFile.WriteLine("    {");
         csFile.WriteLine("    }");
         csFile.WriteLine("}");
@@ -170,11 +170,11 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"        public class Create{Name}CommandHandler : IRequestBaseHandler<Create{Name}Command, {Name}Dto>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType>     _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {GenericType}>     _{Name}Repository;");
         csFile.WriteLine($"            private readonly IMapper _mapper;");
         csFile.WriteLine($"");
         csFile.WriteLine($"");
-        csFile.WriteLine($"            public Create{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Create{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {GenericType}> {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine($"                _mapper = mapper;");
@@ -188,7 +188,7 @@ public partial class ClassDto
         csFile.WriteLine($"                throw new NotImplementedException();");
         csFile.WriteLine("            }");
         csFile.WriteLine("        }");
-        
+
         csFile.Flush();
         csFile.Close();
         csFile.Dispose();
@@ -257,14 +257,14 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"namespace {NameSpace}.Application.{Name}s.Commands.Delete{Name};");
         csFile.WriteLine("");
-        csFile.WriteLine($"public record Delete{Name}Command({Name}IdType Id) : IRequestBase;");
+        csFile.WriteLine($"public record Delete{Name}Command({GenericType} Id) : IRequestBase;");
         csFile.WriteLine("");
         csFile.WriteLine("");
         csFile.WriteLine($"public class Delete{Name}CommandHandler : IRequestBaseHandler<Delete{Name}Command>");
         csFile.WriteLine("{");
-        csFile.WriteLine($"    private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"    private IRepositoryBase<AppDbContext, {Name}, {GenericType}> _{Name}Repository;");
         csFile.WriteLine("");
-        csFile.WriteLine($"    public Delete{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository)");
+        csFile.WriteLine($"    public Delete{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {GenericType}> {Name}Repository)");
         csFile.WriteLine("    {");
         csFile.WriteLine($"        _{Name}Repository = {Name}Repository;");
         csFile.WriteLine("    }");
@@ -306,7 +306,7 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"namespace {NameSpace}.Application.{Name}s.Commands.Delete{Name};");
         csFile.WriteLine("");
-        csFile.WriteLine($"public class Delete{Name}Validator : BaseRequestValidator<Delete{Name}Command>");
+        csFile.WriteLine($"public class Delete{Name}CommandValidator : BaseRequestValidator<Delete{Name}Command>");
         csFile.WriteLine("{");
         csFile.WriteLine($"    public Delete{Name}CommandValidator()");
         csFile.WriteLine("    {");
@@ -358,10 +358,10 @@ public partial class ClassDto
         csFile.WriteLine($"");
         csFile.WriteLine($"        public class Update{Name}CommandHandler : IRequestBaseHandler<Update{Name}Command, {Name}Dto>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {GenericType}> _{Name}Repository;");
         csFile.WriteLine($"            private readonly IMapper _mapper;");
         csFile.WriteLine($"");
-        csFile.WriteLine($"            public Update{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Update{Name}CommandHandler(IRepositoryBase<AppDbContext, {Name},  {GenericType} > {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine($"                _mapper = mapper;");
@@ -445,16 +445,16 @@ public partial class ClassDto
         csFile.WriteLine($"        public record Get{Name}sByIdQuery : IRequestBase<{Name}Dto>");
         csFile.WriteLine("        {");
         csFile.WriteLine("");
-        csFile.WriteLine("            public int Id { get; init; } ");
+        csFile.WriteLine("            public "+GenericType+" Id { get; init; } ");
         csFile.WriteLine("");
         csFile.WriteLine("        }");
         csFile.WriteLine("");
         csFile.WriteLine($"        public class Get{Name}ByIdQueryHandler : IRequestBaseHandler<Get{Name}sByIdQuery, {Name}Dto>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name},  {GenericType} > _{Name}Repository;");
         csFile.WriteLine("            private readonly IMapper _mapper;");
         csFile.WriteLine("");
-        csFile.WriteLine($"            public Get{Name}ByIdQueryHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Get{Name}ByIdQueryHandler(IRepositoryBase<AppDbContext, {Name}, {GenericType}> {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine("                _mapper = mapper;");
@@ -463,7 +463,7 @@ public partial class ClassDto
         csFile.WriteLine($"            public async Task<{Name}Dto> Handle(Get{Name}sByIdQuery request, CancellationToken cancellationToken)");
         csFile.WriteLine("            {");
         csFile.WriteLine("");
-        csFile.WriteLine($"                var entity = await _{Name}Repository.GetAsync(request.Id);");
+        csFile.WriteLine($"                var entity = await _{Name}Repository.GetAsync(x=>x.Id==request.Id,false);");
         csFile.WriteLine($"                return _mapper.Map<{Name}, {Name}Dto>(entity);");
         csFile.WriteLine("");
         csFile.WriteLine("");
@@ -553,10 +553,10 @@ public partial class ClassDto
         csFile.WriteLine("");
         csFile.WriteLine($"        public class Get{Name}sWithPaginationQueryHandler : IRequestBaseHandler<Get{Name}sWithPaginationQuery, PaginatedList<{Name}BriefDto>>");
         csFile.WriteLine("        {");
-        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name}, {Name}IdType> _{Name}Repository;");
+        csFile.WriteLine($"            private IRepositoryBase<AppDbContext, {Name},  {GenericType} > _{Name}Repository;");
         csFile.WriteLine($"            private readonly IMapper _mapper;");
         csFile.WriteLine("");
-        csFile.WriteLine($"            public Get{Name}sWithPaginationQueryHandler(IRepositoryBase<AppDbContext, {Name}, {Name}IdType> {Name}Repository, IMapper mapper)");
+        csFile.WriteLine($"            public Get{Name}sWithPaginationQueryHandler(IRepositoryBase<AppDbContext, {Name},  {GenericType} > {Name}Repository, IMapper mapper)");
         csFile.WriteLine("            {");
         csFile.WriteLine($"                _{Name}Repository = {Name}Repository;");
         csFile.WriteLine("                _mapper = mapper;");
@@ -569,8 +569,7 @@ public partial class ClassDto
         csFile.WriteLine($"                //var count = await _{Name}Repository.GetCountAsync();");
         csFile.WriteLine($"                //List<{Name}BriefDto> result =_mapper.Map<List<{Name}>, List<{Name}BriefDto>>(entities);");
         csFile.WriteLine($"                //return new PaginatedList<{Name}BriefDto>(result, count, request.PageNumber, request.PageSize);");
-        csFile.WriteLine("");
-        csFile.WriteLine("");
+        csFile.WriteLine($"                throw new NotImplementedException();"); csFile.WriteLine("");
         csFile.WriteLine("");
         csFile.WriteLine("            }");
         csFile.WriteLine("        }");

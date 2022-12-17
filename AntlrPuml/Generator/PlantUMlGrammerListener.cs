@@ -6,6 +6,8 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
 
     public List<NamespaceDto> NameSpaces => _namespaces;
     internal NamespaceDto CurrentNamespace = new NamespaceDto { Name = "Global" };
+    internal ClassDto CurrentClass = null;
+
     public override void EnterFile(PlantUMLGrammerParser.FileContext context)
     {
         /*foreach (var definition in context.type_definition())
@@ -26,16 +28,41 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
     public override void EnterClass_def(PlantUMLGrammerParser.Class_defContext context)
     {
         var Name = context.class_name().GetText();
-        CurrentNamespace.Classes.Add(new ClassDto { Name = Name });
+        var cls = new ClassDto { Name = Name };
+        foreach (var item in context.streotype_def())
+        {
+            cls.StreoTypes.Add(item.streotypename().GetText());
+            cls.BaseType = item.streotypename().GetText();
+            if (item.generic_name() != null)
+                cls.GenericType = item.generic_name().GetText();
+        }
+        CurrentClass = cls;
+        CurrentNamespace.Classes.Add(cls);
     }
 
-
-    public override void EnterAbstractclass_def(PlantUMLGrammerParser.Abstractclass_defContext context)
+    public override void EnterField_def(PlantUMLGrammerParser.Field_defContext context)
     {
-        var Name = context.class_name().GetText();
-        var color = context.color() != null ? context.color().GetText() : "";
-        CurrentNamespace.Classes.Add(new ClassDto { Name = Name, IsAbstract = true, Color = color });
+
+        var Name = context.fieldName().GetText();
+        var field = new FieldDto { Name = Name };
+        field.AccessModifier = context.accessor().GetText();
+        field.FieldType = context.fieldType().GetText();
+        foreach (var streotype in context.fieldstreotype())
+        {
+            field.StreoTypes.Add(streotype.GetText());
+        }
+        foreach (var item in context.fieldstreotype())
+        {
+            field.StreoTypes.Add(item.streotypename().GetText());
+        }
+        if (CurrentClass != null)
+            CurrentClass.fields.Add(field);
+        else
+        {
+            Console.WriteLine("No current class found for Field Def.");
+        }
     }
+
 
     public override void EnterRelation(PlantUMLGrammerParser.RelationContext context)
     {
@@ -81,7 +108,13 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
         var typ = context.fieldType().GetText();
         var accessor = context.accessor().GetText();
         var clas = AddClass(ClassName);
-        clas.fields.Add(new FieldDto { Name = FieldName, AccessModifier = accessor, FieldType = typ, });
+        var fld = new FieldDto { Name = FieldName, AccessModifier = accessor, FieldType = typ, };
+        foreach (var item in context.fieldstreotype())
+        {
+            fld.StreoTypes.Add(item.streotypename().GetText());
+
+        }
+        clas.fields.Add(fld);
 
     }
 

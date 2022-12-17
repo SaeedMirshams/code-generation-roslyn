@@ -1,54 +1,56 @@
 grammar PlantUMLGrammer;
 
-file : STARTUML type_definition* SPACE? ENDUML EOF
+file : STARTUML (namespace_def | type_definition)* SPACE? ENDUML EOF
 ;
 
 namespace_def : NAMESPACE SPACE namespace_name SPACE? AQOLADBAZ (type_definition)* AQOLADBASTE 
 ;
 
 type_definition
-    : note_expr
-    | namespace_def
+    : SPACE* (note_expr
     | enum_def
     | class_def
     | extrafield
     | relation
-    | singleline_comment
+    | Singleline_comment
+    )
     ;
+
  
-enum_def : ENUM SPACE enum_name SPACE? streotype_def? (SPACE color)? field_def_block? ;
+enum_def : ENUM SPACE enum_name SPACE? streotype_def? (SPACE color)? enum_field_def_block? ;
 
 field_def_block : AQOLADBAZ field_def* AQOLADBASTE ;
 
-field_def : method_field? (accessor SPACE? fieldType SPACE)? fieldName
-;
+field_def : method_field? fieldstreotype* (accessor SPACE? fieldType SPACE)? fieldName ;
+
+
+enum_field_def_block : AQOLADBAZ enum_field_def* AQOLADBASTE ;
+
+enum_field_def : SPACE* method_field? fieldstreotype* (accessor SPACE? fieldType SPACE)? fieldName ;
+
+
+fieldstreotype : '<<' streotypename '>>' ;
 
 method_field: '{method}' 
             | '{field}' 
 ;
 
 
-class_def : CLASS SPACE class_name SPACE? streotype_def? (SPACE color)?  field_def_block?
-          | abstractclass_def
+class_def : ABSTRACT? CLASS SPACE class_name SPACE? streotype_def* (SPACE color)?  field_def_block?
           | interface_def
            ;
  
- streotype_def : '<<' streotypename '>>' ;
+ streotype_def : '<<' streotypename ( SPACE? '<' generic_name SPACE? '>' SPACE? )? '>>' ;
 
- streotypename : identifier ;
+ streotypename :  identifier ;
+ 
+ generic_name : identifier ;
 
- singleline_comment : '\'' rest_of_line ;
+ multi_line_comment : '\\\'' comment '\'\\' ;
 
- rest_of_line 
- : ~NewLine*
- ;
+ comment : somethings ;
 
-abstractclass_def 
-    : ABSTRACT SPACE CLASS SPACE class_name SPACE? streotype_def? SPACE 
-    | ABSTRACT SPACE class_name 
-    | ABSTRACT SPACE class_name SPACE? streotype_def? SPACE ('#'color)?
-    ;
-
+ 
 interface_def
     : INTERFACE SPACE interface_name
     ;
@@ -56,20 +58,23 @@ interface_def
 color: Color ;
 
 
-extrafield : ownerClass SPACE? COLON SPACE accessor SPACE? fieldType SPACE fieldName
-           | ownerClass SPACE? COLON SPACE accessor SPACE? fieldType SPACE fieldName SPACE? '(' SPACE? ')'
+extrafield : ownerClass SPACE? COLON SPACE accessor SPACE? fieldstreotype* fieldType SPACE fieldName
+           | ownerClass SPACE? COLON SPACE accessor SPACE? fieldType SPACE methodName SPACE? '(' SPACE? ')'
 ;
 
 
-relation : from SPACE relationType SPACE to (COLON direction? SPACE? linktext SPACE? direction?)? ;
+relation : from SPACE multiplicity? SPACE? relationType SPACE? multiplicity? SPACE to (SPACE COLON direction? SPACE? linktext SPACE? direction?)? ;
 
 direction: '<' | '>';
+
+multiplicity : STRING ;
 
 from : identifier;
 to : identifier ;
 interface_name : Identifier;
 
 linktext : somethings ;
+
 relationType: '--|>'
             | '--'
             | '<|--'
@@ -77,6 +82,7 @@ relationType: '--|>'
             | '<--'
             | '*--'
             | '*-'
+            | '--'
             | '-'
             ;
 
@@ -86,8 +92,12 @@ accessor : '+'
          | '#'
          | '~'
          ;
-fieldName : identifier ;
 
+fieldName : identifier 
+;
+
+methodName : identifier 
+;
 
 NAMESPACE : 'namespace' | 'package'
 ;
@@ -139,7 +149,9 @@ AQOLADBASTE : '}'
 
 SPACE: [ \t]+ ;
 
-NewLine : ('\r' '\n'? | '\n') SPACE* -> skip;
+Singleline_comment : '\''  ~[\r\n]* [\r\n ];
+
+NewLine : ('\r' '\n' | '\n' SPACE*) -> skip;
 
 NOTE: 'note'
 ;

@@ -95,6 +95,36 @@ public partial class PlantUMLGrammerBaseVisitor<Result> : AbstractParseTreeVisit
 	/// <return>The visitor result.</return>
 	public virtual Result VisitField_def([NotNull] PlantUMLGrammerParser.Field_defContext context) { return VisitChildren(context); }
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_field_def_block"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitEnum_field_def_block([NotNull] PlantUMLGrammerParser.Enum_field_def_blockContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_field_def"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitEnum_field_def([NotNull] PlantUMLGrammerParser.Enum_field_defContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.fieldstreotype"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitFieldstreotype([NotNull] PlantUMLGrammerParser.FieldstreotypeContext context) { return VisitChildren(context); }
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.method_field"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
@@ -135,7 +165,7 @@ public partial class PlantUMLGrammerBaseVisitor<Result> : AbstractParseTreeVisit
 	/// <return>The visitor result.</return>
 	public virtual Result VisitStreotypename([NotNull] PlantUMLGrammerParser.StreotypenameContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.singleline_comment"/>.
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.generic_name"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -143,9 +173,9 @@ public partial class PlantUMLGrammerBaseVisitor<Result> : AbstractParseTreeVisit
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitSingleline_comment([NotNull] PlantUMLGrammerParser.Singleline_commentContext context) { return VisitChildren(context); }
+	public virtual Result VisitGeneric_name([NotNull] PlantUMLGrammerParser.Generic_nameContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.rest_of_line"/>.
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.multi_line_comment"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -153,9 +183,9 @@ public partial class PlantUMLGrammerBaseVisitor<Result> : AbstractParseTreeVisit
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitRest_of_line([NotNull] PlantUMLGrammerParser.Rest_of_lineContext context) { return VisitChildren(context); }
+	public virtual Result VisitMulti_line_comment([NotNull] PlantUMLGrammerParser.Multi_line_commentContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.abstractclass_def"/>.
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.comment"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -163,7 +193,7 @@ public partial class PlantUMLGrammerBaseVisitor<Result> : AbstractParseTreeVisit
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitAbstractclass_def([NotNull] PlantUMLGrammerParser.Abstractclass_defContext context) { return VisitChildren(context); }
+	public virtual Result VisitComment([NotNull] PlantUMLGrammerParser.CommentContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.interface_def"/>.
 	/// <para>
@@ -214,6 +244,16 @@ public partial class PlantUMLGrammerBaseVisitor<Result> : AbstractParseTreeVisit
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitDirection([NotNull] PlantUMLGrammerParser.DirectionContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.multiplicity"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitMultiplicity([NotNull] PlantUMLGrammerParser.MultiplicityContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.from"/>.
 	/// <para>
@@ -284,6 +324,16 @@ public partial class PlantUMLGrammerBaseVisitor<Result> : AbstractParseTreeVisit
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitFieldName([NotNull] PlantUMLGrammerParser.FieldNameContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.methodName"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitMethodName([NotNull] PlantUMLGrammerParser.MethodNameContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.ownerClass"/>.
 	/// <para>

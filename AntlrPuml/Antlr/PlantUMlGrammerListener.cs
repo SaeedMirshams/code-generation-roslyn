@@ -91,6 +91,36 @@ public interface IPlantUMLGrammerListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitField_def([NotNull] PlantUMLGrammerParser.Field_defContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.enum_field_def_block"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEnum_field_def_block([NotNull] PlantUMLGrammerParser.Enum_field_def_blockContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_field_def_block"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEnum_field_def_block([NotNull] PlantUMLGrammerParser.Enum_field_def_blockContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.enum_field_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterEnum_field_def([NotNull] PlantUMLGrammerParser.Enum_field_defContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_field_def"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitEnum_field_def([NotNull] PlantUMLGrammerParser.Enum_field_defContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.fieldstreotype"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFieldstreotype([NotNull] PlantUMLGrammerParser.FieldstreotypeContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.fieldstreotype"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFieldstreotype([NotNull] PlantUMLGrammerParser.FieldstreotypeContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.method_field"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -131,35 +161,35 @@ public interface IPlantUMLGrammerListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitStreotypename([NotNull] PlantUMLGrammerParser.StreotypenameContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.singleline_comment"/>.
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.generic_name"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterSingleline_comment([NotNull] PlantUMLGrammerParser.Singleline_commentContext context);
+	void EnterGeneric_name([NotNull] PlantUMLGrammerParser.Generic_nameContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.singleline_comment"/>.
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.generic_name"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitSingleline_comment([NotNull] PlantUMLGrammerParser.Singleline_commentContext context);
+	void ExitGeneric_name([NotNull] PlantUMLGrammerParser.Generic_nameContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.rest_of_line"/>.
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.multi_line_comment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterRest_of_line([NotNull] PlantUMLGrammerParser.Rest_of_lineContext context);
+	void EnterMulti_line_comment([NotNull] PlantUMLGrammerParser.Multi_line_commentContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.rest_of_line"/>.
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.multi_line_comment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitRest_of_line([NotNull] PlantUMLGrammerParser.Rest_of_lineContext context);
+	void ExitMulti_line_comment([NotNull] PlantUMLGrammerParser.Multi_line_commentContext context);
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.abstractclass_def"/>.
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.comment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterAbstractclass_def([NotNull] PlantUMLGrammerParser.Abstractclass_defContext context);
+	void EnterComment([NotNull] PlantUMLGrammerParser.CommentContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.abstractclass_def"/>.
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.comment"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitAbstractclass_def([NotNull] PlantUMLGrammerParser.Abstractclass_defContext context);
+	void ExitComment([NotNull] PlantUMLGrammerParser.CommentContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.interface_def"/>.
 	/// </summary>
@@ -210,6 +240,16 @@ public interface IPlantUMLGrammerListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitDirection([NotNull] PlantUMLGrammerParser.DirectionContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.multiplicity"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMultiplicity([NotNull] PlantUMLGrammerParser.MultiplicityContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.multiplicity"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMultiplicity([NotNull] PlantUMLGrammerParser.MultiplicityContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.from"/>.
 	/// </summary>
@@ -280,6 +320,16 @@ public interface IPlantUMLGrammerListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitFieldName([NotNull] PlantUMLGrammerParser.FieldNameContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.methodName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterMethodName([NotNull] PlantUMLGrammerParser.MethodNameContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="PlantUMLGrammerParser.methodName"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitMethodName([NotNull] PlantUMLGrammerParser.MethodNameContext context);
 	/// <summary>
 	/// Enter a parse tree produced by <see cref="PlantUMLGrammerParser.ownerClass"/>.
 	/// </summary>
