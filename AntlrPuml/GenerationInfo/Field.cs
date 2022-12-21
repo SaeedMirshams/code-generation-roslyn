@@ -4,6 +4,7 @@ public class FieldDto
     public string Name { get; set; }
     public List<string> StreoTypes = new();
     private Accessor _Accessor;
+    public bool IsEnumRelated = false;
     public string AccessModifier
     {
         get

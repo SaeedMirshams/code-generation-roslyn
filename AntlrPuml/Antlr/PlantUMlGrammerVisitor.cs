@@ -80,6 +80,18 @@ public interface IPlantUMLGrammerVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitEnum_field_def([NotNull] PlantUMLGrammerParser.Enum_field_defContext context);
 	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.enum_field_streo_type"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnum_field_streo_type([NotNull] PlantUMLGrammerParser.Enum_field_streo_typeContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.enumcomment"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitEnumcomment([NotNull] PlantUMLGrammerParser.EnumcommentContext context);
+	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.fieldstreotype"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -158,11 +170,17 @@ public interface IPlantUMLGrammerVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitDirection([NotNull] PlantUMLGrammerParser.DirectionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.multiplicity"/>.
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.multiplicity_from"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitMultiplicity([NotNull] PlantUMLGrammerParser.MultiplicityContext context);
+	Result VisitMultiplicity_from([NotNull] PlantUMLGrammerParser.Multiplicity_fromContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.multiplicity_to"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMultiplicity_to([NotNull] PlantUMLGrammerParser.Multiplicity_toContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="PlantUMLGrammerParser.from"/>.
 	/// </summary>

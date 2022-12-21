@@ -16,13 +16,18 @@ public partial class ClassDto
         }
         StreamWriter csFile = new StreamWriter(fileName);
         csFile.WriteLine("using IASC.Core.Entities;");
+        if (IsUsingEnums)
+        {
+            csFile.WriteLine($"using {NameSpace}.Domain.Enums;");
+
+        }
         csFile.WriteLine("namespace " + NameSpace + ".Domain.Entities");
         csFile.WriteLine("{");
         csFile.WriteLine("    public class " + Name + " : " + BaseType + "<" + GenericType + ">");
         csFile.WriteLine("    {");
-        foreach (var field in fields)
+        foreach (var field in Fields)
         {
-            csFile.WriteLine($"        {field.AccessModifier} {field.FieldType}  {field.Name} " + "{ get; set; }");
+            csFile.WriteLine($"        {field.AccessModifier} {field.FieldType} {field.Name} " + "{ get; set; }");
 
         }
         csFile.WriteLine("");
@@ -53,12 +58,32 @@ public partial class ClassDto
 
         csFile.WriteLine("using IASC.Core.Application.DTOs;");
         csFile.WriteLine("using IASC.Core.Application.Mappings;");
+        if (IsUsingEnums)
+        {
+            csFile.WriteLine($"using {NameSpace}.Domain.Enums;");
+        }
         csFile.WriteLine($"using {NameSpace}.Domain.Entities;");
 
         csFile.WriteLine("namespace " + NameSpace + ".Application.DTOs;\r\n");
 
         csFile.WriteLine($"public class {Name}BriefDto : EntityDto<{GenericType}>,IMapFrom<{Name}>");
         csFile.WriteLine("    {");
+
+        foreach (var field in ExplicitFields)
+        {
+            csFile.WriteLine($"        {field.AccessModifier} {field.FieldType} {field.Name} " + "{ get; set; }");
+
+        }
+
+        foreach (var field in RelationFields)
+        {
+            if (field.IsEnumRelated)
+                csFile.WriteLine($"        {field.AccessModifier} {field.FieldType} {field.Name} " + "{ get; set; }");
+
+        }
+
+
+
         csFile.WriteLine("    }");
 
         csFile.Flush();
@@ -85,6 +110,10 @@ public partial class ClassDto
 
         csFile.WriteLine("using IASC.Core.Application.DTOs;");
         csFile.WriteLine("using IASC.Core.Application.Mappings;");
+        if (IsUsingEnums)
+        {
+            csFile.WriteLine($"using {NameSpace}.Domain.Enums;");
+        }
         csFile.WriteLine($"using {NameSpace}.Domain.Entities;");
 
         csFile.WriteLine("namespace " + NameSpace + ".Application.DTOs\r\n");
@@ -92,6 +121,21 @@ public partial class ClassDto
 
         csFile.WriteLine($"public class {Name}Dto : EntityDto<{GenericType}>,IMapFrom<{Name}>");
         csFile.WriteLine("    {");
+
+        foreach (var field in ExplicitFields)
+        {
+            csFile.WriteLine($"        {field.AccessModifier} {field.FieldType} {field.Name} " + "{ get; set; }");
+
+        }
+
+        foreach (var field in RelationFields)
+        {
+            if (field.IsEnumRelated)
+                csFile.WriteLine($"        {field.AccessModifier} {field.FieldType} {field.Name} " + "{ get; set; }");
+
+        }
+
+
         csFile.WriteLine("    }");
         csFile.WriteLine("}");
 
@@ -165,6 +209,12 @@ public partial class ClassDto
         csFile.WriteLine($"        public record Create{Name}Command : IRequestBase<{Name}Dto>");
         csFile.WriteLine("        {");
         csFile.WriteLine("            //Other Properties");
+        foreach (var field in ExplicitFields)
+        {
+            csFile.WriteLine($"        {field.AccessModifier} {field.FieldType} {field.Name} " + "{ get; set; }");
+
+        }
+
         csFile.WriteLine("");
         csFile.WriteLine("        }");
         csFile.WriteLine("");
@@ -353,6 +403,11 @@ public partial class ClassDto
         csFile.WriteLine("        {");
         csFile.WriteLine("            public int Id { get; init; }");
         csFile.WriteLine($"            //Other Properties");
+        foreach (var field in ExplicitFields)
+        {
+            csFile.WriteLine($"        {field.AccessModifier} {field.FieldType} {field.Name} " + "{ get; set; }");
+
+        }
         csFile.WriteLine($"");
         csFile.WriteLine("        }");
         csFile.WriteLine($"");
@@ -445,7 +500,7 @@ public partial class ClassDto
         csFile.WriteLine($"        public record Get{Name}sByIdQuery : IRequestBase<{Name}Dto>");
         csFile.WriteLine("        {");
         csFile.WriteLine("");
-        csFile.WriteLine("            public "+GenericType+" Id { get; init; } ");
+        csFile.WriteLine("            public " + GenericType + " Id { get; init; } ");
         csFile.WriteLine("");
         csFile.WriteLine("        }");
         csFile.WriteLine("");
@@ -463,7 +518,7 @@ public partial class ClassDto
         csFile.WriteLine($"            public async Task<{Name}Dto> Handle(Get{Name}sByIdQuery request, CancellationToken cancellationToken)");
         csFile.WriteLine("            {");
         csFile.WriteLine("");
-        csFile.WriteLine($"                var entity = await _{Name}Repository.GetAsync(x=>x.Id==request.Id,false);");
+        csFile.WriteLine($"                var entity = await _{Name}Repository.GetAsync(request.Id);");
         csFile.WriteLine($"                return _mapper.Map<{Name}, {Name}Dto>(entity);");
         csFile.WriteLine("");
         csFile.WriteLine("");
@@ -617,5 +672,82 @@ public partial class ClassDto
         csFile.Dispose();
     }
 
+    internal void GenerateController()
+    {
+        var folderName = NameSpace + $".WebApi\\Controllers";
+        if (!Directory.Exists(folderName))
+        {
+            Directory.CreateDirectory(folderName);
+        }
+        var fileName = folderName + "\\" + Name + "Controller.cs";
+        if (!Forced && File.Exists(fileName))
+        {
+            Console.WriteLine($"{fileName} Ignored.");
+            return;
+        }
+        StreamWriter csFile = new StreamWriter(fileName);
+        csFile.WriteLine($"using {NameSpace}.Application.{Name}s.Commands.Create{Name};");
+        csFile.WriteLine($"using {NameSpace}.Application.{Name}s.Commands.Delete{Name};");
+        csFile.WriteLine($"using {NameSpace}.Application.{Name}s.Commands.Update{Name};");
+        csFile.WriteLine($"using {NameSpace}.Application.{Name}s.Queries.Get{Name}sWithPagination;");
+        csFile.WriteLine("using IASC.Core.Application.DTOs;");
+        csFile.WriteLine("using IASC.Core.WebApi;");
+        csFile.WriteLine("using MediatR;");
+        csFile.WriteLine("using Microsoft.AspNetCore.Authorization;");
+        csFile.WriteLine("using Microsoft.AspNetCore.Mvc;");
+        csFile.WriteLine($"using {NameSpace}.Application.DTOs;");
+        csFile.WriteLine("using System.Net;");
+        //csFile.WriteLine("using IdentityModel.Client;");
+        csFile.WriteLine("");
+        csFile.WriteLine($"namespace {NameSpace}.WebUI.Controllers;");
+        csFile.WriteLine("");
+        csFile.WriteLine("");
+        csFile.WriteLine($"public class {Name}sController : IASCApiControllerBase");
+        csFile.WriteLine("{");
+        csFile.WriteLine("    private readonly IMediator _mediator;");
+        csFile.WriteLine($"    public {Name}sController(IMediator mediator) => _mediator = mediator;");
+        csFile.WriteLine("    ");
+        csFile.WriteLine("");
+        csFile.WriteLine("    [HttpGet]");
+        csFile.WriteLine($"    public async Task<ApiResult<PaginatedList<{Name}BriefDto>>> Get{Name}sWithPagination([FromQuery] Get{Name}sWithPaginationQuery query)");
+        csFile.WriteLine("    {");
+        csFile.WriteLine($"       return new ApiSuccessResult<PaginatedList<{Name}BriefDto>>(null, await _mediator.Send(query));");
+        csFile.WriteLine("    }");
+        csFile.WriteLine("");
+        csFile.WriteLine("    [HttpPost]");
+        csFile.WriteLine($"    public async Task<ApiResult<{Name}Dto>> Create(Create{Name}Command command)");
+        csFile.WriteLine("    {");
+        csFile.WriteLine($"        return new ApiSuccessResult<{Name}Dto>( null, await _mediator.Send(command));");
+        csFile.WriteLine("    }");
+        csFile.WriteLine("");
+        csFile.WriteLine("    [HttpPut(\"{id}\")]");
+        csFile.WriteLine($"    public async Task<ApiResult<{Name}Dto>> Update(int id, Update{Name}Command command)");
+        csFile.WriteLine("    {");
+        csFile.WriteLine("        if (id != command.Id)");
+        csFile.WriteLine("        {");
+        csFile.WriteLine($"            return new ApiErrorResult<{Name}Dto>(null, null);");
+        csFile.WriteLine("        }");
+        csFile.WriteLine("");
+        csFile.WriteLine($"        return new ApiSuccessResult<{Name}Dto>( null, await _mediator.Send(command));");
+        csFile.WriteLine("");
+        csFile.WriteLine("");
+        csFile.WriteLine("        ");
+        csFile.WriteLine("    }");
+        csFile.WriteLine("");
+        csFile.WriteLine("    [HttpDelete(\"{id}\")]");
+        csFile.WriteLine("    public async Task<ApiResult<object>> Delete(int id)");
+        csFile.WriteLine("    {");
+        csFile.WriteLine($"        await _mediator.Send(new Delete{Name}Command(id));");
+        csFile.WriteLine("        return new ApiSuccessResult<object>( null, null);");
+        csFile.WriteLine("");
+        csFile.WriteLine("");
+        csFile.WriteLine("        ");
+        csFile.WriteLine("    }");
+        csFile.WriteLine("}");
 
+
+        csFile.Flush();
+        csFile.Close();
+        csFile.Dispose();
+    }
 }

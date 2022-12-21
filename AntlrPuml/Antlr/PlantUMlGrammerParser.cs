@@ -38,49 +38,52 @@ public partial class PlantUMLGrammerParser : Parser {
 	public const int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
-		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, NAMESPACE=24, 
-		CLASS=25, ENUM=26, ABSTRACT=27, INTERFACE=28, COLON=29, STRING=30, SIGN=31, 
-		NUMBER=32, STARTUML=33, ENDUML=34, AQOLADBAZ=35, AQOLADBASTE=36, SPACE=37, 
-		Singleline_comment=38, NewLine=39, NOTE=40, Identifier=41, ENDNOTE=42, 
-		Unicode=43, Color=44;
+		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, SLT=23, DLT=24, SGT=25, 
+		DGT=26, NAMESPACE=27, CLASS=28, ENUM=29, ABSTRACT=30, INTERFACE=31, COLON=32, 
+		STRING=33, SIGN=34, NUMBER=35, STARTUML=36, ENDUML=37, AQOLADBAZ=38, AQOLADBASTE=39, 
+		SPACE=40, Singleline_comment=41, NewLine=42, NOTE=43, Identifier=44, ENDNOTE=45, 
+		Unicode=46, Color=47;
 	public const int
 		RULE_file = 0, RULE_namespace_def = 1, RULE_type_definition = 2, RULE_enum_def = 3, 
 		RULE_field_def_block = 4, RULE_field_def = 5, RULE_enum_field_def_block = 6, 
-		RULE_enum_field_def = 7, RULE_fieldstreotype = 8, RULE_method_field = 9, 
-		RULE_class_def = 10, RULE_streotype_def = 11, RULE_streotypename = 12, 
-		RULE_generic_name = 13, RULE_multi_line_comment = 14, RULE_comment = 15, 
-		RULE_interface_def = 16, RULE_color = 17, RULE_extrafield = 18, RULE_relation = 19, 
-		RULE_direction = 20, RULE_multiplicity = 21, RULE_from = 22, RULE_to = 23, 
-		RULE_interface_name = 24, RULE_linktext = 25, RULE_relationType = 26, 
-		RULE_accessor = 27, RULE_fieldName = 28, RULE_methodName = 29, RULE_ownerClass = 30, 
-		RULE_fieldType = 31, RULE_class_name = 32, RULE_enum_name = 33, RULE_namespace_name = 34, 
-		RULE_identifier = 35, RULE_dotIdentifier = 36, RULE_note_expr = 37, RULE_somethingsToEndNote = 38, 
-		RULE_somethings = 39;
+		RULE_enum_field_def = 7, RULE_enum_field_streo_type = 8, RULE_enumcomment = 9, 
+		RULE_fieldstreotype = 10, RULE_method_field = 11, RULE_class_def = 12, 
+		RULE_streotype_def = 13, RULE_streotypename = 14, RULE_generic_name = 15, 
+		RULE_multi_line_comment = 16, RULE_comment = 17, RULE_interface_def = 18, 
+		RULE_color = 19, RULE_extrafield = 20, RULE_relation = 21, RULE_direction = 22, 
+		RULE_multiplicity_from = 23, RULE_multiplicity_to = 24, RULE_from = 25, 
+		RULE_to = 26, RULE_interface_name = 27, RULE_linktext = 28, RULE_relationType = 29, 
+		RULE_accessor = 30, RULE_fieldName = 31, RULE_methodName = 32, RULE_ownerClass = 33, 
+		RULE_fieldType = 34, RULE_class_name = 35, RULE_enum_name = 36, RULE_namespace_name = 37, 
+		RULE_identifier = 38, RULE_dotIdentifier = 39, RULE_note_expr = 40, RULE_somethingsToEndNote = 41, 
+		RULE_somethings = 42;
 	public static readonly string[] ruleNames = {
 		"file", "namespace_def", "type_definition", "enum_def", "field_def_block", 
-		"field_def", "enum_field_def_block", "enum_field_def", "fieldstreotype", 
-		"method_field", "class_def", "streotype_def", "streotypename", "generic_name", 
-		"multi_line_comment", "comment", "interface_def", "color", "extrafield", 
-		"relation", "direction", "multiplicity", "from", "to", "interface_name", 
-		"linktext", "relationType", "accessor", "fieldName", "methodName", "ownerClass", 
-		"fieldType", "class_name", "enum_name", "namespace_name", "identifier", 
-		"dotIdentifier", "note_expr", "somethingsToEndNote", "somethings"
+		"field_def", "enum_field_def_block", "enum_field_def", "enum_field_streo_type", 
+		"enumcomment", "fieldstreotype", "method_field", "class_def", "streotype_def", 
+		"streotypename", "generic_name", "multi_line_comment", "comment", "interface_def", 
+		"color", "extrafield", "relation", "direction", "multiplicity_from", "multiplicity_to", 
+		"from", "to", "interface_name", "linktext", "relationType", "accessor", 
+		"fieldName", "methodName", "ownerClass", "fieldType", "class_name", "enum_name", 
+		"namespace_name", "identifier", "dotIdentifier", "note_expr", "somethingsToEndNote", 
+		"somethings"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'<<'", "'>>'", "'{method}'", "'{field}'", "'<'", "'>'", "'\\''", 
-		"''\\'", "'('", "')'", "'--|>'", "'--'", "'<|--'", "'-->'", "'<--'", "'*--'", 
-		"'*-'", "'-'", "'+'", "'#'", "'~'", "'\"'", "'.'", null, "'class'", "'enum'", 
-		"'abstract'", "'interface'", "':'", null, null, null, "'@startuml'", "'@enduml'", 
-		"'{'", "'}'", null, null, null, "'note'"
+		null, "'{method}'", "'{field}'", "'\\''", "''\\'", "'('", "')'", "'--|>'", 
+		"'--'", "'<|--'", "'-->'", "'<-->'", "'<--'", "'*--'", "'--*'", "'*-'", 
+		"'-*'", "'-'", "'+'", "'#'", "'~'", "'\"'", "'.'", "'<'", null, "'>'", 
+		null, null, "'class'", "'enum'", "'abstract'", "'interface'", "':'", null, 
+		null, null, "'@startuml'", "'@enduml'", "'{'", "'}'", null, null, null, 
+		"'note'"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, null, null, null, null, null, null, null, null, null, null, null, 
-		"NAMESPACE", "CLASS", "ENUM", "ABSTRACT", "INTERFACE", "COLON", "STRING", 
-		"SIGN", "NUMBER", "STARTUML", "ENDUML", "AQOLADBAZ", "AQOLADBASTE", "SPACE", 
-		"Singleline_comment", "NewLine", "NOTE", "Identifier", "ENDNOTE", "Unicode", 
-		"Color"
+		null, null, null, null, null, null, null, null, null, null, null, "SLT", 
+		"DLT", "SGT", "DGT", "NAMESPACE", "CLASS", "ENUM", "ABSTRACT", "INTERFACE", 
+		"COLON", "STRING", "SIGN", "NUMBER", "STARTUML", "ENDUML", "AQOLADBAZ", 
+		"AQOLADBASTE", "SPACE", "Singleline_comment", "NewLine", "NOTE", "Identifier", 
+		"ENDNOTE", "Unicode", "Color"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -163,24 +166,24 @@ public partial class PlantUMLGrammerParser : Parser {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 80;
+			State = 86;
 			Match(STARTUML);
-			State = 85;
+			State = 91;
 			ErrorHandler.Sync(this);
 			_alt = Interpreter.AdaptivePredict(TokenStream,1,Context);
 			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
-					State = 83;
+					State = 89;
 					ErrorHandler.Sync(this);
 					switch (TokenStream.LA(1)) {
 					case NAMESPACE:
 						{
-						State = 81;
+						State = 87;
 						namespace_def();
 						}
 						break;
-					case T__21:
+					case T__20:
 					case CLASS:
 					case ENUM:
 					case ABSTRACT:
@@ -191,7 +194,7 @@ public partial class PlantUMLGrammerParser : Parser {
 					case NOTE:
 					case Identifier:
 						{
-						State = 82;
+						State = 88;
 						type_definition();
 						}
 						break;
@@ -200,23 +203,23 @@ public partial class PlantUMLGrammerParser : Parser {
 					}
 					} 
 				}
-				State = 87;
+				State = 93;
 				ErrorHandler.Sync(this);
 				_alt = Interpreter.AdaptivePredict(TokenStream,1,Context);
 			}
-			State = 89;
+			State = 95;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==SPACE) {
 				{
-				State = 88;
+				State = 94;
 				Match(SPACE);
 				}
 			}
 
-			State = 91;
+			State = 97;
 			Match(ENDUML);
-			State = 92;
+			State = 98;
 			Match(Eof);
 			}
 		}
@@ -279,39 +282,39 @@ public partial class PlantUMLGrammerParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 94;
+			State = 100;
 			Match(NAMESPACE);
-			State = 95;
+			State = 101;
 			Match(SPACE);
-			State = 96;
+			State = 102;
 			namespace_name();
-			State = 98;
+			State = 104;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==SPACE) {
 				{
-				State = 97;
+				State = 103;
 				Match(SPACE);
 				}
 			}
 
-			State = 100;
+			State = 106;
 			Match(AQOLADBAZ);
-			State = 104;
+			State = 110;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 3712432996352L) != 0) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 29699432513536L) != 0) {
 				{
 				{
-				State = 101;
+				State = 107;
 				type_definition();
 				}
 				}
-				State = 106;
+				State = 112;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 107;
+			State = 113;
 			Match(AQOLADBASTE);
 			}
 		}
@@ -378,56 +381,56 @@ public partial class PlantUMLGrammerParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 112;
+			State = 118;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==SPACE) {
 				{
 				{
-				State = 109;
+				State = 115;
 				Match(SPACE);
 				}
 				}
-				State = 114;
+				State = 120;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 121;
+			State = 127;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,6,Context) ) {
 			case 1:
 				{
-				State = 115;
+				State = 121;
 				note_expr();
 				}
 				break;
 			case 2:
 				{
-				State = 116;
+				State = 122;
 				enum_def();
 				}
 				break;
 			case 3:
 				{
-				State = 117;
+				State = 123;
 				class_def();
 				}
 				break;
 			case 4:
 				{
-				State = 118;
+				State = 124;
 				extrafield();
 				}
 				break;
 			case 5:
 				{
-				State = 119;
+				State = 125;
 				relation();
 				}
 				break;
 			case 6:
 				{
-				State = 120;
+				State = 126;
 				Match(Singleline_comment);
 				}
 				break;
@@ -494,50 +497,50 @@ public partial class PlantUMLGrammerParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 123;
+			State = 129;
 			Match(ENUM);
-			State = 124;
+			State = 130;
 			Match(SPACE);
-			State = 125;
+			State = 131;
 			enum_name();
-			State = 127;
+			State = 133;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
 			case 1:
 				{
-				State = 126;
+				State = 132;
 				Match(SPACE);
 				}
 				break;
 			}
-			State = 130;
+			State = 136;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__0) {
+			if (_la==DLT) {
 				{
-				State = 129;
+				State = 135;
 				streotype_def();
 				}
 			}
 
-			State = 134;
+			State = 140;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
 			case 1:
 				{
-				State = 132;
+				State = 138;
 				Match(SPACE);
-				State = 133;
+				State = 139;
 				color();
 				}
 				break;
 			}
-			State = 137;
+			State = 143;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==AQOLADBAZ) {
 				{
-				State = 136;
+				State = 142;
 				enum_field_def_block();
 				}
 			}
@@ -563,6 +566,10 @@ public partial class PlantUMLGrammerParser : Parser {
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public Field_defContext field_def(int i) {
 			return GetRuleContext<Field_defContext>(i);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SPACE() { return GetTokens(PlantUMLGrammerParser.SPACE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SPACE(int i) {
+			return GetToken(PlantUMLGrammerParser.SPACE, i);
 		}
 		public Field_def_blockContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -593,25 +600,42 @@ public partial class PlantUMLGrammerParser : Parser {
 		EnterRule(_localctx, 8, RULE_field_def_block);
 		int _la;
 		try {
+			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 139;
+			State = 145;
 			Match(AQOLADBAZ);
-			State = 143;
+			State = 149;
+			ErrorHandler.Sync(this);
+			_alt = Interpreter.AdaptivePredict(TokenStream,11,Context);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 146;
+					field_def();
+					}
+					} 
+				}
+				State = 151;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,11,Context);
+			}
+			State = 155;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 2200105123866L) != 0) {
+			while (_la==SPACE) {
 				{
 				{
-				State = 140;
-				field_def();
+				State = 152;
+				Match(SPACE);
 				}
 				}
-				State = 145;
+				State = 157;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 146;
+			State = 158;
 			Match(AQOLADBASTE);
 			}
 		}
@@ -630,6 +654,10 @@ public partial class PlantUMLGrammerParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public FieldNameContext fieldName() {
 			return GetRuleContext<FieldNameContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SPACE() { return GetTokens(PlantUMLGrammerParser.SPACE); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SPACE(int i) {
+			return GetToken(PlantUMLGrammerParser.SPACE, i);
+		}
 		[System.Diagnostics.DebuggerNonUserCode] public Method_fieldContext method_field() {
 			return GetRuleContext<Method_fieldContext>(0);
 		}
@@ -644,10 +672,6 @@ public partial class PlantUMLGrammerParser : Parser {
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public FieldTypeContext fieldType() {
 			return GetRuleContext<FieldTypeContext>(0);
-		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SPACE() { return GetTokens(PlantUMLGrammerParser.SPACE); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SPACE(int i) {
-			return GetToken(PlantUMLGrammerParser.SPACE, i);
 		}
 		public Field_defContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
@@ -680,55 +704,69 @@ public partial class PlantUMLGrammerParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 149;
+			State = 163;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__2 || _la==T__3) {
+			while (_la==SPACE) {
 				{
-				State = 148;
+				{
+				State = 160;
+				Match(SPACE);
+				}
+				}
+				State = 165;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
+			State = 167;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==T__0 || _la==T__1) {
+				{
+				State = 166;
 				method_field();
 				}
 			}
 
-			State = 154;
+			State = 172;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (_la==T__0) {
+			while (_la==DLT) {
 				{
 				{
-				State = 151;
+				State = 169;
 				fieldstreotype();
 				}
 				}
-				State = 156;
+				State = 174;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 164;
+			State = 182;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 3932160L) != 0) {
+			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 1966080L) != 0) {
 				{
-				State = 157;
+				State = 175;
 				accessor();
-				State = 159;
+				State = 177;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 158;
+					State = 176;
 					Match(SPACE);
 					}
 				}
 
-				State = 161;
+				State = 179;
 				fieldType();
-				State = 162;
+				State = 180;
 				Match(SPACE);
 				}
 			}
 
-			State = 166;
+			State = 184;
 			fieldName();
 			}
 		}
@@ -783,23 +821,23 @@ public partial class PlantUMLGrammerParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 168;
+			State = 186;
 			Match(AQOLADBAZ);
-			State = 172;
+			State = 190;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 2337544077338L) != 0) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 18700308447238L) != 0) {
 				{
 				{
-				State = 169;
+				State = 187;
 				enum_field_def();
 				}
 				}
-				State = 174;
+				State = 192;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 175;
+			State = 193;
 			Match(AQOLADBASTE);
 			}
 		}
@@ -837,6 +875,12 @@ public partial class PlantUMLGrammerParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public FieldTypeContext fieldType() {
 			return GetRuleContext<FieldTypeContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public Enum_field_streo_typeContext[] enum_field_streo_type() {
+			return GetRuleContexts<Enum_field_streo_typeContext>();
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public Enum_field_streo_typeContext enum_field_streo_type(int i) {
+			return GetRuleContext<Enum_field_streo_typeContext>(i);
+		}
 		public Enum_field_defContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -866,72 +910,230 @@ public partial class PlantUMLGrammerParser : Parser {
 		EnterRule(_localctx, 14, RULE_enum_field_def);
 		int _la;
 		try {
+			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 180;
+			State = 198;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==SPACE) {
 				{
 				{
-				State = 177;
+				State = 195;
 				Match(SPACE);
 				}
 				}
-				State = 182;
+				State = 200;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 184;
+			State = 202;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (_la==T__2 || _la==T__3) {
+			if (_la==T__0 || _la==T__1) {
 				{
-				State = 183;
+				State = 201;
 				method_field();
 				}
 			}
 
-			State = 189;
+			State = 207;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (_la==T__0) {
+			while (_la==DLT) {
 				{
 				{
-				State = 186;
+				State = 204;
 				fieldstreotype();
 				}
 				}
-				State = 191;
+				State = 209;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 199;
+			State = 217;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 3932160L) != 0) {
+			if (((_la) & ~0x3f) == 0 && ((1L << _la) & 1966080L) != 0) {
 				{
-				State = 192;
+				State = 210;
 				accessor();
-				State = 194;
+				State = 212;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 193;
+					State = 211;
 					Match(SPACE);
 					}
 				}
 
-				State = 196;
+				State = 214;
 				fieldType();
-				State = 197;
+				State = 215;
 				Match(SPACE);
 				}
 			}
 
-			State = 201;
+			State = 219;
 			fieldName();
+			State = 223;
+			ErrorHandler.Sync(this);
+			_alt = Interpreter.AdaptivePredict(TokenStream,24,Context);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 220;
+					Match(SPACE);
+					}
+					} 
+				}
+				State = 225;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,24,Context);
+			}
+			State = 229;
+			ErrorHandler.Sync(this);
+			_alt = Interpreter.AdaptivePredict(TokenStream,25,Context);
+			while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					State = 226;
+					enum_field_streo_type();
+					}
+					} 
+				}
+				State = 231;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,25,Context);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Enum_field_streo_typeContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DLT() { return GetToken(PlantUMLGrammerParser.DLT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public EnumcommentContext enumcomment() {
+			return GetRuleContext<EnumcommentContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DGT() { return GetToken(PlantUMLGrammerParser.DGT, 0); }
+		public Enum_field_streo_typeContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_enum_field_streo_type; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
+			if (typedListener != null) typedListener.EnterEnum_field_streo_type(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
+			if (typedListener != null) typedListener.ExitEnum_field_streo_type(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IPlantUMLGrammerVisitor<TResult> typedVisitor = visitor as IPlantUMLGrammerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitEnum_field_streo_type(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Enum_field_streo_typeContext enum_field_streo_type() {
+		Enum_field_streo_typeContext _localctx = new Enum_field_streo_typeContext(Context, State);
+		EnterRule(_localctx, 16, RULE_enum_field_streo_type);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 232;
+			Match(DLT);
+			State = 233;
+			enumcomment();
+			State = 234;
+			Match(DGT);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class EnumcommentContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] DGT() { return GetTokens(PlantUMLGrammerParser.DGT); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DGT(int i) {
+			return GetToken(PlantUMLGrammerParser.DGT, i);
+		}
+		public EnumcommentContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_enumcomment; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
+			if (typedListener != null) typedListener.EnterEnumcomment(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
+			if (typedListener != null) typedListener.ExitEnumcomment(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IPlantUMLGrammerVisitor<TResult> typedVisitor = visitor as IPlantUMLGrammerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitEnumcomment(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public EnumcommentContext enumcomment() {
+		EnumcommentContext _localctx = new EnumcommentContext(Context, State);
+		EnterRule(_localctx, 18, RULE_enumcomment);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 239;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 281474909601790L) != 0) {
+				{
+				{
+				State = 236;
+				_la = TokenStream.LA(1);
+				if ( _la <= 0 || (_la==DGT) ) {
+				ErrorHandler.RecoverInline(this);
+				}
+				else {
+					ErrorHandler.ReportMatch(this);
+				    Consume();
+				}
+				}
+				}
+				State = 241;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -946,9 +1148,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	}
 
 	public partial class FieldstreotypeContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DLT() { return GetToken(PlantUMLGrammerParser.DLT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public StreotypenameContext streotypename() {
 			return GetRuleContext<StreotypenameContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DGT() { return GetToken(PlantUMLGrammerParser.DGT, 0); }
 		public FieldstreotypeContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -975,16 +1179,16 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public FieldstreotypeContext fieldstreotype() {
 		FieldstreotypeContext _localctx = new FieldstreotypeContext(Context, State);
-		EnterRule(_localctx, 16, RULE_fieldstreotype);
+		EnterRule(_localctx, 20, RULE_fieldstreotype);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 203;
-			Match(T__0);
-			State = 204;
+			State = 242;
+			Match(DLT);
+			State = 243;
 			streotypename();
-			State = 205;
-			Match(T__1);
+			State = 244;
+			Match(DGT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1025,14 +1229,14 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Method_fieldContext method_field() {
 		Method_fieldContext _localctx = new Method_fieldContext(Context, State);
-		EnterRule(_localctx, 18, RULE_method_field);
+		EnterRule(_localctx, 22, RULE_method_field);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 207;
+			State = 246;
 			_la = TokenStream.LA(1);
-			if ( !(_la==T__2 || _la==T__3) ) {
+			if ( !(_la==T__0 || _la==T__1) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -1103,74 +1307,74 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Class_defContext class_def() {
 		Class_defContext _localctx = new Class_defContext(Context, State);
-		EnterRule(_localctx, 20, RULE_class_def);
+		EnterRule(_localctx, 24, RULE_class_def);
 		int _la;
 		try {
-			State = 232;
+			State = 271;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case CLASS:
 			case ABSTRACT:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 210;
+				State = 249;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==ABSTRACT) {
 					{
-					State = 209;
+					State = 248;
 					Match(ABSTRACT);
 					}
 				}
 
-				State = 212;
+				State = 251;
 				Match(CLASS);
-				State = 213;
+				State = 252;
 				Match(SPACE);
-				State = 214;
+				State = 253;
 				class_name();
-				State = 216;
+				State = 255;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,23,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,28,Context) ) {
 				case 1:
 					{
-					State = 215;
+					State = 254;
 					Match(SPACE);
 					}
 					break;
 				}
-				State = 221;
+				State = 260;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				while (_la==T__0) {
+				while (_la==DLT) {
 					{
 					{
-					State = 218;
+					State = 257;
 					streotype_def();
 					}
 					}
-					State = 223;
+					State = 262;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 226;
+				State = 265;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,25,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,30,Context) ) {
 				case 1:
 					{
-					State = 224;
+					State = 263;
 					Match(SPACE);
-					State = 225;
+					State = 264;
 					color();
 					}
 					break;
 				}
-				State = 229;
+				State = 268;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==AQOLADBAZ) {
 					{
-					State = 228;
+					State = 267;
 					field_def_block();
 					}
 				}
@@ -1180,7 +1384,7 @@ public partial class PlantUMLGrammerParser : Parser {
 			case INTERFACE:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 231;
+				State = 270;
 				interface_def();
 				}
 				break;
@@ -1200,12 +1404,16 @@ public partial class PlantUMLGrammerParser : Parser {
 	}
 
 	public partial class Streotype_defContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DLT() { return GetToken(PlantUMLGrammerParser.DLT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public StreotypenameContext streotypename() {
 			return GetRuleContext<StreotypenameContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode DGT() { return GetToken(PlantUMLGrammerParser.DGT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SLT() { return GetToken(PlantUMLGrammerParser.SLT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public Generic_nameContext generic_name() {
 			return GetRuleContext<Generic_nameContext>(0);
 		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SGT() { return GetToken(PlantUMLGrammerParser.SGT, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode[] SPACE() { return GetTokens(PlantUMLGrammerParser.SPACE); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SPACE(int i) {
 			return GetToken(PlantUMLGrammerParser.SPACE, i);
@@ -1236,61 +1444,99 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Streotype_defContext streotype_def() {
 		Streotype_defContext _localctx = new Streotype_defContext(Context, State);
-		EnterRule(_localctx, 22, RULE_streotype_def);
+		EnterRule(_localctx, 26, RULE_streotype_def);
 		int _la;
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 234;
-			Match(T__0);
-			State = 235;
-			streotypename();
-			State = 248;
+			State = 304;
 			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==T__4 || _la==SPACE) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,37,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
 				{
-				State = 237;
+				State = 273;
+				Match(DLT);
+				State = 274;
+				streotypename();
+				State = 275;
+				Match(DGT);
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 277;
+				Match(DLT);
+				State = 278;
+				streotypename();
+				State = 280;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 236;
+					State = 279;
 					Match(SPACE);
 					}
 				}
 
-				State = 239;
-				Match(T__4);
-				State = 240;
+				State = 282;
+				Match(SLT);
+				State = 283;
 				generic_name();
-				State = 242;
+				State = 285;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 241;
+					State = 284;
 					Match(SPACE);
 					}
 				}
 
-				State = 244;
-				Match(T__5);
-				State = 246;
+				State = 287;
+				Match(DGT);
+				State = 288;
+				Match(SGT);
+				}
+				break;
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 290;
+				Match(DLT);
+				State = 291;
+				streotypename();
+				State = 293;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 245;
+					State = 292;
 					Match(SPACE);
 					}
 				}
 
+				State = 295;
+				Match(SLT);
+				State = 296;
+				generic_name();
+				State = 298;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.LA(1);
+				if (_la==SPACE) {
+					{
+					State = 297;
+					Match(SPACE);
+					}
 				}
-			}
 
-			State = 250;
-			Match(T__1);
+				State = 300;
+				Match(SGT);
+				State = 301;
+				Match(SPACE);
+				State = 302;
+				Match(DGT);
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -1334,11 +1580,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public StreotypenameContext streotypename() {
 		StreotypenameContext _localctx = new StreotypenameContext(Context, State);
-		EnterRule(_localctx, 24, RULE_streotypename);
+		EnterRule(_localctx, 28, RULE_streotypename);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 252;
+			State = 306;
 			identifier();
 			}
 		}
@@ -1383,11 +1629,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Generic_nameContext generic_name() {
 		Generic_nameContext _localctx = new Generic_nameContext(Context, State);
-		EnterRule(_localctx, 26, RULE_generic_name);
+		EnterRule(_localctx, 30, RULE_generic_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 254;
+			State = 308;
 			identifier();
 			}
 		}
@@ -1432,16 +1678,16 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Multi_line_commentContext multi_line_comment() {
 		Multi_line_commentContext _localctx = new Multi_line_commentContext(Context, State);
-		EnterRule(_localctx, 28, RULE_multi_line_comment);
+		EnterRule(_localctx, 32, RULE_multi_line_comment);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 256;
-			Match(T__6);
-			State = 257;
+			State = 310;
+			Match(T__2);
+			State = 311;
 			comment();
-			State = 258;
-			Match(T__7);
+			State = 312;
+			Match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1485,11 +1731,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public CommentContext comment() {
 		CommentContext _localctx = new CommentContext(Context, State);
-		EnterRule(_localctx, 30, RULE_comment);
+		EnterRule(_localctx, 34, RULE_comment);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 260;
+			State = 314;
 			somethings();
 			}
 		}
@@ -1536,15 +1782,15 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Interface_defContext interface_def() {
 		Interface_defContext _localctx = new Interface_defContext(Context, State);
-		EnterRule(_localctx, 32, RULE_interface_def);
+		EnterRule(_localctx, 36, RULE_interface_def);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 262;
+			State = 316;
 			Match(INTERFACE);
-			State = 263;
+			State = 317;
 			Match(SPACE);
-			State = 264;
+			State = 318;
 			interface_name();
 			}
 		}
@@ -1587,11 +1833,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public ColorContext color() {
 		ColorContext _localctx = new ColorContext(Context, State);
-		EnterRule(_localctx, 34, RULE_color);
+		EnterRule(_localctx, 38, RULE_color);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 266;
+			State = 320;
 			Match(Color);
 			}
 		}
@@ -1659,126 +1905,126 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public ExtrafieldContext extrafield() {
 		ExtrafieldContext _localctx = new ExtrafieldContext(Context, State);
-		EnterRule(_localctx, 36, RULE_extrafield);
+		EnterRule(_localctx, 40, RULE_extrafield);
 		int _la;
 		try {
-			State = 310;
+			State = 364;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,39,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,45,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 268;
+				State = 322;
 				ownerClass();
-				State = 270;
+				State = 324;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 269;
+					State = 323;
 					Match(SPACE);
 					}
 				}
 
-				State = 272;
+				State = 326;
 				Match(COLON);
-				State = 273;
+				State = 327;
 				Match(SPACE);
-				State = 274;
+				State = 328;
 				accessor();
-				State = 276;
+				State = 330;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 275;
+					State = 329;
 					Match(SPACE);
 					}
 				}
 
-				State = 281;
+				State = 335;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				while (_la==T__0) {
+				while (_la==DLT) {
 					{
 					{
-					State = 278;
+					State = 332;
 					fieldstreotype();
 					}
 					}
-					State = 283;
+					State = 337;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
-				State = 284;
+				State = 338;
 				fieldType();
-				State = 285;
+				State = 339;
 				Match(SPACE);
-				State = 286;
+				State = 340;
 				fieldName();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 288;
+				State = 342;
 				ownerClass();
-				State = 290;
+				State = 344;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 289;
+					State = 343;
 					Match(SPACE);
 					}
 				}
 
-				State = 292;
+				State = 346;
 				Match(COLON);
-				State = 293;
+				State = 347;
 				Match(SPACE);
-				State = 294;
+				State = 348;
 				accessor();
-				State = 296;
+				State = 350;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 295;
+					State = 349;
 					Match(SPACE);
 					}
 				}
 
-				State = 298;
+				State = 352;
 				fieldType();
-				State = 299;
+				State = 353;
 				Match(SPACE);
-				State = 300;
+				State = 354;
 				methodName();
-				State = 302;
+				State = 356;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 301;
+					State = 355;
 					Match(SPACE);
 					}
 				}
 
-				State = 304;
-				Match(T__8);
-				State = 306;
+				State = 358;
+				Match(T__4);
+				State = 360;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				if (_la==SPACE) {
 					{
-					State = 305;
+					State = 359;
 					Match(SPACE);
 					}
 				}
 
-				State = 308;
-				Match(T__9);
+				State = 362;
+				Match(T__5);
 				}
 				break;
 			}
@@ -1808,11 +2054,11 @@ public partial class PlantUMLGrammerParser : Parser {
 		[System.Diagnostics.DebuggerNonUserCode] public ToContext to() {
 			return GetRuleContext<ToContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public MultiplicityContext[] multiplicity() {
-			return GetRuleContexts<MultiplicityContext>();
+		[System.Diagnostics.DebuggerNonUserCode] public Multiplicity_fromContext multiplicity_from() {
+			return GetRuleContext<Multiplicity_fromContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public MultiplicityContext multiplicity(int i) {
-			return GetRuleContext<MultiplicityContext>(i);
+		[System.Diagnostics.DebuggerNonUserCode] public Multiplicity_toContext multiplicity_to() {
+			return GetRuleContext<Multiplicity_toContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode COLON() { return GetToken(PlantUMLGrammerParser.COLON, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public LinktextContext linktext() {
@@ -1850,108 +2096,108 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public RelationContext relation() {
 		RelationContext _localctx = new RelationContext(Context, State);
-		EnterRule(_localctx, 38, RULE_relation);
+		EnterRule(_localctx, 42, RULE_relation);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 312;
+			State = 366;
 			from();
-			State = 313;
+			State = 367;
 			Match(SPACE);
-			State = 315;
+			State = 369;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==STRING) {
 				{
-				State = 314;
-				multiplicity();
+				State = 368;
+				multiplicity_from();
 				}
 			}
 
-			State = 318;
+			State = 372;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==SPACE) {
 				{
-				State = 317;
+				State = 371;
 				Match(SPACE);
 				}
 			}
 
-			State = 320;
+			State = 374;
 			relationType();
-			State = 322;
-			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,42,Context) ) {
-			case 1:
-				{
-				State = 321;
-				Match(SPACE);
-				}
-				break;
-			}
-			State = 325;
-			ErrorHandler.Sync(this);
-			_la = TokenStream.LA(1);
-			if (_la==STRING) {
-				{
-				State = 324;
-				multiplicity();
-				}
-			}
-
-			State = 327;
-			Match(SPACE);
-			State = 328;
-			to();
-			State = 344;
+			State = 376;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,48,Context) ) {
 			case 1:
 				{
-				State = 329;
+				State = 375;
 				Match(SPACE);
-				State = 330;
+				}
+				break;
+			}
+			State = 379;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.LA(1);
+			if (_la==STRING) {
+				{
+				State = 378;
+				multiplicity_to();
+				}
+			}
+
+			State = 381;
+			Match(SPACE);
+			State = 382;
+			to();
+			State = 398;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,54,Context) ) {
+			case 1:
+				{
+				State = 383;
+				Match(SPACE);
+				State = 384;
 				Match(COLON);
-				State = 332;
+				State = 386;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,44,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,50,Context) ) {
 				case 1:
 					{
-					State = 331;
+					State = 385;
 					direction();
 					}
 					break;
 				}
-				State = 335;
+				State = 389;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,45,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,51,Context) ) {
 				case 1:
 					{
-					State = 334;
+					State = 388;
 					Match(SPACE);
 					}
 					break;
 				}
-				State = 337;
+				State = 391;
 				linktext();
-				State = 339;
+				State = 393;
 				ErrorHandler.Sync(this);
-				switch ( Interpreter.AdaptivePredict(TokenStream,46,Context) ) {
+				switch ( Interpreter.AdaptivePredict(TokenStream,52,Context) ) {
 				case 1:
 					{
-					State = 338;
+					State = 392;
 					Match(SPACE);
 					}
 					break;
 				}
-				State = 342;
+				State = 396;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
-				if (_la==T__4 || _la==T__5) {
+				if (_la==SLT || _la==SGT) {
 					{
-					State = 341;
+					State = 395;
 					direction();
 					}
 				}
@@ -1973,6 +2219,8 @@ public partial class PlantUMLGrammerParser : Parser {
 	}
 
 	public partial class DirectionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SLT() { return GetToken(PlantUMLGrammerParser.SLT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode SGT() { return GetToken(PlantUMLGrammerParser.SGT, 0); }
 		public DirectionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -1999,14 +2247,14 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public DirectionContext direction() {
 		DirectionContext _localctx = new DirectionContext(Context, State);
-		EnterRule(_localctx, 40, RULE_direction);
+		EnterRule(_localctx, 44, RULE_direction);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 346;
+			State = 400;
 			_la = TokenStream.LA(1);
-			if ( !(_la==T__4 || _la==T__5) ) {
+			if ( !(_la==SLT || _la==SGT) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -2026,39 +2274,86 @@ public partial class PlantUMLGrammerParser : Parser {
 		return _localctx;
 	}
 
-	public partial class MultiplicityContext : ParserRuleContext {
+	public partial class Multiplicity_fromContext : ParserRuleContext {
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING() { return GetToken(PlantUMLGrammerParser.STRING, 0); }
-		public MultiplicityContext(ParserRuleContext parent, int invokingState)
+		public Multiplicity_fromContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_multiplicity; } }
+		public override int RuleIndex { get { return RULE_multiplicity_from; } }
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void EnterRule(IParseTreeListener listener) {
 			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
-			if (typedListener != null) typedListener.EnterMultiplicity(this);
+			if (typedListener != null) typedListener.EnterMultiplicity_from(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override void ExitRule(IParseTreeListener listener) {
 			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
-			if (typedListener != null) typedListener.ExitMultiplicity(this);
+			if (typedListener != null) typedListener.ExitMultiplicity_from(this);
 		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IPlantUMLGrammerVisitor<TResult> typedVisitor = visitor as IPlantUMLGrammerVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitMultiplicity(this);
+			if (typedVisitor != null) return typedVisitor.VisitMultiplicity_from(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public MultiplicityContext multiplicity() {
-		MultiplicityContext _localctx = new MultiplicityContext(Context, State);
-		EnterRule(_localctx, 42, RULE_multiplicity);
+	public Multiplicity_fromContext multiplicity_from() {
+		Multiplicity_fromContext _localctx = new Multiplicity_fromContext(Context, State);
+		EnterRule(_localctx, 46, RULE_multiplicity_from);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 348;
+			State = 402;
+			Match(STRING);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class Multiplicity_toContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode STRING() { return GetToken(PlantUMLGrammerParser.STRING, 0); }
+		public Multiplicity_toContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_multiplicity_to; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
+			if (typedListener != null) typedListener.EnterMultiplicity_to(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IPlantUMLGrammerListener typedListener = listener as IPlantUMLGrammerListener;
+			if (typedListener != null) typedListener.ExitMultiplicity_to(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IPlantUMLGrammerVisitor<TResult> typedVisitor = visitor as IPlantUMLGrammerVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitMultiplicity_to(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public Multiplicity_toContext multiplicity_to() {
+		Multiplicity_toContext _localctx = new Multiplicity_toContext(Context, State);
+		EnterRule(_localctx, 48, RULE_multiplicity_to);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 404;
 			Match(STRING);
 			}
 		}
@@ -2103,11 +2398,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public FromContext from() {
 		FromContext _localctx = new FromContext(Context, State);
-		EnterRule(_localctx, 44, RULE_from);
+		EnterRule(_localctx, 50, RULE_from);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 350;
+			State = 406;
 			identifier();
 			}
 		}
@@ -2152,11 +2447,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public ToContext to() {
 		ToContext _localctx = new ToContext(Context, State);
-		EnterRule(_localctx, 46, RULE_to);
+		EnterRule(_localctx, 52, RULE_to);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 352;
+			State = 408;
 			identifier();
 			}
 		}
@@ -2199,11 +2494,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Interface_nameContext interface_name() {
 		Interface_nameContext _localctx = new Interface_nameContext(Context, State);
-		EnterRule(_localctx, 48, RULE_interface_name);
+		EnterRule(_localctx, 54, RULE_interface_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 354;
+			State = 410;
 			Match(Identifier);
 			}
 		}
@@ -2248,11 +2543,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public LinktextContext linktext() {
 		LinktextContext _localctx = new LinktextContext(Context, State);
-		EnterRule(_localctx, 50, RULE_linktext);
+		EnterRule(_localctx, 56, RULE_linktext);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 356;
+			State = 412;
 			somethings();
 			}
 		}
@@ -2294,14 +2589,14 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public RelationTypeContext relationType() {
 		RelationTypeContext _localctx = new RelationTypeContext(Context, State);
-		EnterRule(_localctx, 52, RULE_relationType);
+		EnterRule(_localctx, 58, RULE_relationType);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 358;
+			State = 414;
 			_la = TokenStream.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 522240L) != 0) ) {
+			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 262016L) != 0) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -2348,14 +2643,14 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public AccessorContext accessor() {
 		AccessorContext _localctx = new AccessorContext(Context, State);
-		EnterRule(_localctx, 54, RULE_accessor);
+		EnterRule(_localctx, 60, RULE_accessor);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 360;
+			State = 416;
 			_la = TokenStream.LA(1);
-			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 3932160L) != 0) ) {
+			if ( !(((_la) & ~0x3f) == 0 && ((1L << _la) & 1966080L) != 0) ) {
 			ErrorHandler.RecoverInline(this);
 			}
 			else {
@@ -2405,11 +2700,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public FieldNameContext fieldName() {
 		FieldNameContext _localctx = new FieldNameContext(Context, State);
-		EnterRule(_localctx, 56, RULE_fieldName);
+		EnterRule(_localctx, 62, RULE_fieldName);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 362;
+			State = 418;
 			identifier();
 			}
 		}
@@ -2454,11 +2749,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public MethodNameContext methodName() {
 		MethodNameContext _localctx = new MethodNameContext(Context, State);
-		EnterRule(_localctx, 58, RULE_methodName);
+		EnterRule(_localctx, 64, RULE_methodName);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 364;
+			State = 420;
 			identifier();
 			}
 		}
@@ -2503,11 +2798,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public OwnerClassContext ownerClass() {
 		OwnerClassContext _localctx = new OwnerClassContext(Context, State);
-		EnterRule(_localctx, 60, RULE_ownerClass);
+		EnterRule(_localctx, 66, RULE_ownerClass);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 366;
+			State = 422;
 			identifier();
 			}
 		}
@@ -2552,11 +2847,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public FieldTypeContext fieldType() {
 		FieldTypeContext _localctx = new FieldTypeContext(Context, State);
-		EnterRule(_localctx, 62, RULE_fieldType);
+		EnterRule(_localctx, 68, RULE_fieldType);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 368;
+			State = 424;
 			identifier();
 			}
 		}
@@ -2599,11 +2894,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Class_nameContext class_name() {
 		Class_nameContext _localctx = new Class_nameContext(Context, State);
-		EnterRule(_localctx, 64, RULE_class_name);
+		EnterRule(_localctx, 70, RULE_class_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 370;
+			State = 426;
 			Match(Identifier);
 			}
 		}
@@ -2646,11 +2941,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Enum_nameContext enum_name() {
 		Enum_nameContext _localctx = new Enum_nameContext(Context, State);
-		EnterRule(_localctx, 66, RULE_enum_name);
+		EnterRule(_localctx, 72, RULE_enum_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 372;
+			State = 428;
 			Match(Identifier);
 			}
 		}
@@ -2695,11 +2990,11 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Namespace_nameContext namespace_name() {
 		Namespace_nameContext _localctx = new Namespace_nameContext(Context, State);
-		EnterRule(_localctx, 68, RULE_namespace_name);
+		EnterRule(_localctx, 74, RULE_namespace_name);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 374;
+			State = 430;
 			dotIdentifier();
 			}
 		}
@@ -2743,33 +3038,33 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public IdentifierContext identifier() {
 		IdentifierContext _localctx = new IdentifierContext(Context, State);
-		EnterRule(_localctx, 70, RULE_identifier);
+		EnterRule(_localctx, 76, RULE_identifier);
 		try {
-			State = 381;
+			State = 437;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case Identifier:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 376;
+				State = 432;
 				Match(Identifier);
 				}
 				break;
-			case T__21:
+			case T__20:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 377;
-				Match(T__21);
-				State = 378;
+				State = 433;
+				Match(T__20);
+				State = 434;
 				Match(Identifier);
-				State = 379;
-				Match(T__21);
+				State = 435;
+				Match(T__20);
 				}
 				break;
 			case STRING:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 380;
+				State = 436;
 				Match(STRING);
 				}
 				break;
@@ -2822,33 +3117,33 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public DotIdentifierContext dotIdentifier() {
 		DotIdentifierContext _localctx = new DotIdentifierContext(Context, State);
-		EnterRule(_localctx, 72, RULE_dotIdentifier);
+		EnterRule(_localctx, 78, RULE_dotIdentifier);
 		try {
-			State = 389;
+			State = 445;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,50,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,56,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 383;
+				State = 439;
 				identifier();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 384;
+				State = 440;
 				identifier();
-				State = 385;
-				Match(T__22);
-				State = 386;
+				State = 441;
+				Match(T__21);
+				State = 442;
 				dotIdentifier();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 388;
+				State = 444;
 				Match(STRING);
 				}
 				break;
@@ -2898,17 +3193,17 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public Note_exprContext note_expr() {
 		Note_exprContext _localctx = new Note_exprContext(Context, State);
-		EnterRule(_localctx, 74, RULE_note_expr);
+		EnterRule(_localctx, 80, RULE_note_expr);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 391;
+			State = 447;
 			Match(NOTE);
-			State = 392;
+			State = 448;
 			Match(SPACE);
-			State = 393;
+			State = 449;
 			somethingsToEndNote();
-			State = 394;
+			State = 450;
 			Match(ENDNOTE);
 			}
 		}
@@ -2954,18 +3249,18 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public SomethingsToEndNoteContext somethingsToEndNote() {
 		SomethingsToEndNoteContext _localctx = new SomethingsToEndNoteContext(Context, State);
-		EnterRule(_localctx, 76, RULE_somethingsToEndNote);
+		EnterRule(_localctx, 82, RULE_somethingsToEndNote);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 399;
+			State = 455;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
-			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 30786325577726L) != 0) {
+			while (((_la) & ~0x3f) == 0 && ((1L << _la) & 246290604621822L) != 0) {
 				{
 				{
-				State = 396;
+				State = 452;
 				_la = TokenStream.LA(1);
 				if ( _la <= 0 || (_la==ENDNOTE) ) {
 				ErrorHandler.RecoverInline(this);
@@ -2976,7 +3271,7 @@ public partial class PlantUMLGrammerParser : Parser {
 				}
 				}
 				}
-				State = 401;
+				State = 457;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
@@ -3024,48 +3319,48 @@ public partial class PlantUMLGrammerParser : Parser {
 	[RuleVersion(0)]
 	public SomethingsContext somethings() {
 		SomethingsContext _localctx = new SomethingsContext(Context, State);
-		EnterRule(_localctx, 78, RULE_somethings);
+		EnterRule(_localctx, 84, RULE_somethings);
 		int _la;
 		try {
 			int _alt;
-			State = 414;
+			State = 470;
 			ErrorHandler.Sync(this);
-			switch ( Interpreter.AdaptivePredict(TokenStream,54,Context) ) {
+			switch ( Interpreter.AdaptivePredict(TokenStream,60,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 405;
+				State = 461;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,52,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,58,Context);
 				while ( _alt!=1 && _alt!=global::Antlr4.Runtime.Atn.ATN.INVALID_ALT_NUMBER ) {
 					if ( _alt==1+1 ) {
 						{
 						{
-						State = 402;
+						State = 458;
 						MatchWildcard();
 						}
 						} 
 					}
-					State = 407;
+					State = 463;
 					ErrorHandler.Sync(this);
-					_alt = Interpreter.AdaptivePredict(TokenStream,52,Context);
+					_alt = Interpreter.AdaptivePredict(TokenStream,58,Context);
 				}
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 411;
+				State = 467;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==Unicode) {
 					{
 					{
-					State = 408;
+					State = 464;
 					Match(Unicode);
 					}
 					}
-					State = 413;
+					State = 469;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
@@ -3085,143 +3380,162 @@ public partial class PlantUMLGrammerParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,44,417,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,47,473,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
 		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,2,26,7,26,2,27,7,27,2,28,7,28,
 		2,29,7,29,2,30,7,30,2,31,7,31,2,32,7,32,2,33,7,33,2,34,7,34,2,35,7,35,
-		2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,1,0,1,0,1,0,5,0,84,8,0,10,0,12,
-		0,87,9,0,1,0,3,0,90,8,0,1,0,1,0,1,0,1,1,1,1,1,1,1,1,3,1,99,8,1,1,1,1,1,
-		5,1,103,8,1,10,1,12,1,106,9,1,1,1,1,1,1,2,5,2,111,8,2,10,2,12,2,114,9,
-		2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,122,8,2,1,3,1,3,1,3,1,3,3,3,128,8,3,1,3,
-		3,3,131,8,3,1,3,1,3,3,3,135,8,3,1,3,3,3,138,8,3,1,4,1,4,5,4,142,8,4,10,
-		4,12,4,145,9,4,1,4,1,4,1,5,3,5,150,8,5,1,5,5,5,153,8,5,10,5,12,5,156,9,
-		5,1,5,1,5,3,5,160,8,5,1,5,1,5,1,5,3,5,165,8,5,1,5,1,5,1,6,1,6,5,6,171,
-		8,6,10,6,12,6,174,9,6,1,6,1,6,1,7,5,7,179,8,7,10,7,12,7,182,9,7,1,7,3,
-		7,185,8,7,1,7,5,7,188,8,7,10,7,12,7,191,9,7,1,7,1,7,3,7,195,8,7,1,7,1,
-		7,1,7,3,7,200,8,7,1,7,1,7,1,8,1,8,1,8,1,8,1,9,1,9,1,10,3,10,211,8,10,1,
-		10,1,10,1,10,1,10,3,10,217,8,10,1,10,5,10,220,8,10,10,10,12,10,223,9,10,
-		1,10,1,10,3,10,227,8,10,1,10,3,10,230,8,10,1,10,3,10,233,8,10,1,11,1,11,
-		1,11,3,11,238,8,11,1,11,1,11,1,11,3,11,243,8,11,1,11,1,11,3,11,247,8,11,
-		3,11,249,8,11,1,11,1,11,1,12,1,12,1,13,1,13,1,14,1,14,1,14,1,14,1,15,1,
-		15,1,16,1,16,1,16,1,16,1,17,1,17,1,18,1,18,3,18,271,8,18,1,18,1,18,1,18,
-		1,18,3,18,277,8,18,1,18,5,18,280,8,18,10,18,12,18,283,9,18,1,18,1,18,1,
-		18,1,18,1,18,1,18,3,18,291,8,18,1,18,1,18,1,18,1,18,3,18,297,8,18,1,18,
-		1,18,1,18,1,18,3,18,303,8,18,1,18,1,18,3,18,307,8,18,1,18,1,18,3,18,311,
-		8,18,1,19,1,19,1,19,3,19,316,8,19,1,19,3,19,319,8,19,1,19,1,19,3,19,323,
-		8,19,1,19,3,19,326,8,19,1,19,1,19,1,19,1,19,1,19,3,19,333,8,19,1,19,3,
-		19,336,8,19,1,19,1,19,3,19,340,8,19,1,19,3,19,343,8,19,3,19,345,8,19,1,
-		20,1,20,1,21,1,21,1,22,1,22,1,23,1,23,1,24,1,24,1,25,1,25,1,26,1,26,1,
-		27,1,27,1,28,1,28,1,29,1,29,1,30,1,30,1,31,1,31,1,32,1,32,1,33,1,33,1,
-		34,1,34,1,35,1,35,1,35,1,35,1,35,3,35,382,8,35,1,36,1,36,1,36,1,36,1,36,
-		1,36,3,36,390,8,36,1,37,1,37,1,37,1,37,1,37,1,38,5,38,398,8,38,10,38,12,
-		38,401,9,38,1,39,5,39,404,8,39,10,39,12,39,407,9,39,1,39,5,39,410,8,39,
-		10,39,12,39,413,9,39,3,39,415,8,39,1,39,1,405,0,40,0,2,4,6,8,10,12,14,
-		16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60,62,
-		64,66,68,70,72,74,76,78,0,5,1,0,3,4,1,0,5,6,1,0,11,18,1,0,18,21,1,0,42,
-		42,437,0,80,1,0,0,0,2,94,1,0,0,0,4,112,1,0,0,0,6,123,1,0,0,0,8,139,1,0,
-		0,0,10,149,1,0,0,0,12,168,1,0,0,0,14,180,1,0,0,0,16,203,1,0,0,0,18,207,
-		1,0,0,0,20,232,1,0,0,0,22,234,1,0,0,0,24,252,1,0,0,0,26,254,1,0,0,0,28,
-		256,1,0,0,0,30,260,1,0,0,0,32,262,1,0,0,0,34,266,1,0,0,0,36,310,1,0,0,
-		0,38,312,1,0,0,0,40,346,1,0,0,0,42,348,1,0,0,0,44,350,1,0,0,0,46,352,1,
-		0,0,0,48,354,1,0,0,0,50,356,1,0,0,0,52,358,1,0,0,0,54,360,1,0,0,0,56,362,
-		1,0,0,0,58,364,1,0,0,0,60,366,1,0,0,0,62,368,1,0,0,0,64,370,1,0,0,0,66,
-		372,1,0,0,0,68,374,1,0,0,0,70,381,1,0,0,0,72,389,1,0,0,0,74,391,1,0,0,
-		0,76,399,1,0,0,0,78,414,1,0,0,0,80,85,5,33,0,0,81,84,3,2,1,0,82,84,3,4,
-		2,0,83,81,1,0,0,0,83,82,1,0,0,0,84,87,1,0,0,0,85,83,1,0,0,0,85,86,1,0,
-		0,0,86,89,1,0,0,0,87,85,1,0,0,0,88,90,5,37,0,0,89,88,1,0,0,0,89,90,1,0,
-		0,0,90,91,1,0,0,0,91,92,5,34,0,0,92,93,5,0,0,1,93,1,1,0,0,0,94,95,5,24,
-		0,0,95,96,5,37,0,0,96,98,3,68,34,0,97,99,5,37,0,0,98,97,1,0,0,0,98,99,
-		1,0,0,0,99,100,1,0,0,0,100,104,5,35,0,0,101,103,3,4,2,0,102,101,1,0,0,
-		0,103,106,1,0,0,0,104,102,1,0,0,0,104,105,1,0,0,0,105,107,1,0,0,0,106,
-		104,1,0,0,0,107,108,5,36,0,0,108,3,1,0,0,0,109,111,5,37,0,0,110,109,1,
-		0,0,0,111,114,1,0,0,0,112,110,1,0,0,0,112,113,1,0,0,0,113,121,1,0,0,0,
-		114,112,1,0,0,0,115,122,3,74,37,0,116,122,3,6,3,0,117,122,3,20,10,0,118,
-		122,3,36,18,0,119,122,3,38,19,0,120,122,5,38,0,0,121,115,1,0,0,0,121,116,
-		1,0,0,0,121,117,1,0,0,0,121,118,1,0,0,0,121,119,1,0,0,0,121,120,1,0,0,
-		0,122,5,1,0,0,0,123,124,5,26,0,0,124,125,5,37,0,0,125,127,3,66,33,0,126,
-		128,5,37,0,0,127,126,1,0,0,0,127,128,1,0,0,0,128,130,1,0,0,0,129,131,3,
-		22,11,0,130,129,1,0,0,0,130,131,1,0,0,0,131,134,1,0,0,0,132,133,5,37,0,
-		0,133,135,3,34,17,0,134,132,1,0,0,0,134,135,1,0,0,0,135,137,1,0,0,0,136,
-		138,3,12,6,0,137,136,1,0,0,0,137,138,1,0,0,0,138,7,1,0,0,0,139,143,5,35,
-		0,0,140,142,3,10,5,0,141,140,1,0,0,0,142,145,1,0,0,0,143,141,1,0,0,0,143,
-		144,1,0,0,0,144,146,1,0,0,0,145,143,1,0,0,0,146,147,5,36,0,0,147,9,1,0,
-		0,0,148,150,3,18,9,0,149,148,1,0,0,0,149,150,1,0,0,0,150,154,1,0,0,0,151,
-		153,3,16,8,0,152,151,1,0,0,0,153,156,1,0,0,0,154,152,1,0,0,0,154,155,1,
-		0,0,0,155,164,1,0,0,0,156,154,1,0,0,0,157,159,3,54,27,0,158,160,5,37,0,
-		0,159,158,1,0,0,0,159,160,1,0,0,0,160,161,1,0,0,0,161,162,3,62,31,0,162,
-		163,5,37,0,0,163,165,1,0,0,0,164,157,1,0,0,0,164,165,1,0,0,0,165,166,1,
-		0,0,0,166,167,3,56,28,0,167,11,1,0,0,0,168,172,5,35,0,0,169,171,3,14,7,
-		0,170,169,1,0,0,0,171,174,1,0,0,0,172,170,1,0,0,0,172,173,1,0,0,0,173,
-		175,1,0,0,0,174,172,1,0,0,0,175,176,5,36,0,0,176,13,1,0,0,0,177,179,5,
-		37,0,0,178,177,1,0,0,0,179,182,1,0,0,0,180,178,1,0,0,0,180,181,1,0,0,0,
-		181,184,1,0,0,0,182,180,1,0,0,0,183,185,3,18,9,0,184,183,1,0,0,0,184,185,
-		1,0,0,0,185,189,1,0,0,0,186,188,3,16,8,0,187,186,1,0,0,0,188,191,1,0,0,
-		0,189,187,1,0,0,0,189,190,1,0,0,0,190,199,1,0,0,0,191,189,1,0,0,0,192,
-		194,3,54,27,0,193,195,5,37,0,0,194,193,1,0,0,0,194,195,1,0,0,0,195,196,
-		1,0,0,0,196,197,3,62,31,0,197,198,5,37,0,0,198,200,1,0,0,0,199,192,1,0,
-		0,0,199,200,1,0,0,0,200,201,1,0,0,0,201,202,3,56,28,0,202,15,1,0,0,0,203,
-		204,5,1,0,0,204,205,3,24,12,0,205,206,5,2,0,0,206,17,1,0,0,0,207,208,7,
-		0,0,0,208,19,1,0,0,0,209,211,5,27,0,0,210,209,1,0,0,0,210,211,1,0,0,0,
-		211,212,1,0,0,0,212,213,5,25,0,0,213,214,5,37,0,0,214,216,3,64,32,0,215,
-		217,5,37,0,0,216,215,1,0,0,0,216,217,1,0,0,0,217,221,1,0,0,0,218,220,3,
-		22,11,0,219,218,1,0,0,0,220,223,1,0,0,0,221,219,1,0,0,0,221,222,1,0,0,
-		0,222,226,1,0,0,0,223,221,1,0,0,0,224,225,5,37,0,0,225,227,3,34,17,0,226,
-		224,1,0,0,0,226,227,1,0,0,0,227,229,1,0,0,0,228,230,3,8,4,0,229,228,1,
-		0,0,0,229,230,1,0,0,0,230,233,1,0,0,0,231,233,3,32,16,0,232,210,1,0,0,
-		0,232,231,1,0,0,0,233,21,1,0,0,0,234,235,5,1,0,0,235,248,3,24,12,0,236,
-		238,5,37,0,0,237,236,1,0,0,0,237,238,1,0,0,0,238,239,1,0,0,0,239,240,5,
-		5,0,0,240,242,3,26,13,0,241,243,5,37,0,0,242,241,1,0,0,0,242,243,1,0,0,
-		0,243,244,1,0,0,0,244,246,5,6,0,0,245,247,5,37,0,0,246,245,1,0,0,0,246,
-		247,1,0,0,0,247,249,1,0,0,0,248,237,1,0,0,0,248,249,1,0,0,0,249,250,1,
-		0,0,0,250,251,5,2,0,0,251,23,1,0,0,0,252,253,3,70,35,0,253,25,1,0,0,0,
-		254,255,3,70,35,0,255,27,1,0,0,0,256,257,5,7,0,0,257,258,3,30,15,0,258,
-		259,5,8,0,0,259,29,1,0,0,0,260,261,3,78,39,0,261,31,1,0,0,0,262,263,5,
-		28,0,0,263,264,5,37,0,0,264,265,3,48,24,0,265,33,1,0,0,0,266,267,5,44,
-		0,0,267,35,1,0,0,0,268,270,3,60,30,0,269,271,5,37,0,0,270,269,1,0,0,0,
-		270,271,1,0,0,0,271,272,1,0,0,0,272,273,5,29,0,0,273,274,5,37,0,0,274,
-		276,3,54,27,0,275,277,5,37,0,0,276,275,1,0,0,0,276,277,1,0,0,0,277,281,
-		1,0,0,0,278,280,3,16,8,0,279,278,1,0,0,0,280,283,1,0,0,0,281,279,1,0,0,
-		0,281,282,1,0,0,0,282,284,1,0,0,0,283,281,1,0,0,0,284,285,3,62,31,0,285,
-		286,5,37,0,0,286,287,3,56,28,0,287,311,1,0,0,0,288,290,3,60,30,0,289,291,
-		5,37,0,0,290,289,1,0,0,0,290,291,1,0,0,0,291,292,1,0,0,0,292,293,5,29,
-		0,0,293,294,5,37,0,0,294,296,3,54,27,0,295,297,5,37,0,0,296,295,1,0,0,
-		0,296,297,1,0,0,0,297,298,1,0,0,0,298,299,3,62,31,0,299,300,5,37,0,0,300,
-		302,3,58,29,0,301,303,5,37,0,0,302,301,1,0,0,0,302,303,1,0,0,0,303,304,
-		1,0,0,0,304,306,5,9,0,0,305,307,5,37,0,0,306,305,1,0,0,0,306,307,1,0,0,
-		0,307,308,1,0,0,0,308,309,5,10,0,0,309,311,1,0,0,0,310,268,1,0,0,0,310,
-		288,1,0,0,0,311,37,1,0,0,0,312,313,3,44,22,0,313,315,5,37,0,0,314,316,
-		3,42,21,0,315,314,1,0,0,0,315,316,1,0,0,0,316,318,1,0,0,0,317,319,5,37,
-		0,0,318,317,1,0,0,0,318,319,1,0,0,0,319,320,1,0,0,0,320,322,3,52,26,0,
-		321,323,5,37,0,0,322,321,1,0,0,0,322,323,1,0,0,0,323,325,1,0,0,0,324,326,
-		3,42,21,0,325,324,1,0,0,0,325,326,1,0,0,0,326,327,1,0,0,0,327,328,5,37,
-		0,0,328,344,3,46,23,0,329,330,5,37,0,0,330,332,5,29,0,0,331,333,3,40,20,
-		0,332,331,1,0,0,0,332,333,1,0,0,0,333,335,1,0,0,0,334,336,5,37,0,0,335,
-		334,1,0,0,0,335,336,1,0,0,0,336,337,1,0,0,0,337,339,3,50,25,0,338,340,
-		5,37,0,0,339,338,1,0,0,0,339,340,1,0,0,0,340,342,1,0,0,0,341,343,3,40,
-		20,0,342,341,1,0,0,0,342,343,1,0,0,0,343,345,1,0,0,0,344,329,1,0,0,0,344,
-		345,1,0,0,0,345,39,1,0,0,0,346,347,7,1,0,0,347,41,1,0,0,0,348,349,5,30,
-		0,0,349,43,1,0,0,0,350,351,3,70,35,0,351,45,1,0,0,0,352,353,3,70,35,0,
-		353,47,1,0,0,0,354,355,5,41,0,0,355,49,1,0,0,0,356,357,3,78,39,0,357,51,
-		1,0,0,0,358,359,7,2,0,0,359,53,1,0,0,0,360,361,7,3,0,0,361,55,1,0,0,0,
-		362,363,3,70,35,0,363,57,1,0,0,0,364,365,3,70,35,0,365,59,1,0,0,0,366,
-		367,3,70,35,0,367,61,1,0,0,0,368,369,3,70,35,0,369,63,1,0,0,0,370,371,
-		5,41,0,0,371,65,1,0,0,0,372,373,5,41,0,0,373,67,1,0,0,0,374,375,3,72,36,
-		0,375,69,1,0,0,0,376,382,5,41,0,0,377,378,5,22,0,0,378,379,5,41,0,0,379,
-		382,5,22,0,0,380,382,5,30,0,0,381,376,1,0,0,0,381,377,1,0,0,0,381,380,
-		1,0,0,0,382,71,1,0,0,0,383,390,3,70,35,0,384,385,3,70,35,0,385,386,5,23,
-		0,0,386,387,3,72,36,0,387,390,1,0,0,0,388,390,5,30,0,0,389,383,1,0,0,0,
-		389,384,1,0,0,0,389,388,1,0,0,0,390,73,1,0,0,0,391,392,5,40,0,0,392,393,
-		5,37,0,0,393,394,3,76,38,0,394,395,5,42,0,0,395,75,1,0,0,0,396,398,8,4,
-		0,0,397,396,1,0,0,0,398,401,1,0,0,0,399,397,1,0,0,0,399,400,1,0,0,0,400,
-		77,1,0,0,0,401,399,1,0,0,0,402,404,9,0,0,0,403,402,1,0,0,0,404,407,1,0,
-		0,0,405,406,1,0,0,0,405,403,1,0,0,0,406,415,1,0,0,0,407,405,1,0,0,0,408,
-		410,5,43,0,0,409,408,1,0,0,0,410,413,1,0,0,0,411,409,1,0,0,0,411,412,1,
-		0,0,0,412,415,1,0,0,0,413,411,1,0,0,0,414,405,1,0,0,0,414,411,1,0,0,0,
-		415,79,1,0,0,0,55,83,85,89,98,104,112,121,127,130,134,137,143,149,154,
-		159,164,172,180,184,189,194,199,210,216,221,226,229,232,237,242,246,248,
-		270,276,281,290,296,302,306,310,315,318,322,325,332,335,339,342,344,381,
-		389,399,405,411,414
+		2,36,7,36,2,37,7,37,2,38,7,38,2,39,7,39,2,40,7,40,2,41,7,41,2,42,7,42,
+		1,0,1,0,1,0,5,0,90,8,0,10,0,12,0,93,9,0,1,0,3,0,96,8,0,1,0,1,0,1,0,1,1,
+		1,1,1,1,1,1,3,1,105,8,1,1,1,1,1,5,1,109,8,1,10,1,12,1,112,9,1,1,1,1,1,
+		1,2,5,2,117,8,2,10,2,12,2,120,9,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,128,8,2,
+		1,3,1,3,1,3,1,3,3,3,134,8,3,1,3,3,3,137,8,3,1,3,1,3,3,3,141,8,3,1,3,3,
+		3,144,8,3,1,4,1,4,5,4,148,8,4,10,4,12,4,151,9,4,1,4,5,4,154,8,4,10,4,12,
+		4,157,9,4,1,4,1,4,1,5,5,5,162,8,5,10,5,12,5,165,9,5,1,5,3,5,168,8,5,1,
+		5,5,5,171,8,5,10,5,12,5,174,9,5,1,5,1,5,3,5,178,8,5,1,5,1,5,1,5,3,5,183,
+		8,5,1,5,1,5,1,6,1,6,5,6,189,8,6,10,6,12,6,192,9,6,1,6,1,6,1,7,5,7,197,
+		8,7,10,7,12,7,200,9,7,1,7,3,7,203,8,7,1,7,5,7,206,8,7,10,7,12,7,209,9,
+		7,1,7,1,7,3,7,213,8,7,1,7,1,7,1,7,3,7,218,8,7,1,7,1,7,5,7,222,8,7,10,7,
+		12,7,225,9,7,1,7,5,7,228,8,7,10,7,12,7,231,9,7,1,8,1,8,1,8,1,8,1,9,5,9,
+		238,8,9,10,9,12,9,241,9,9,1,10,1,10,1,10,1,10,1,11,1,11,1,12,3,12,250,
+		8,12,1,12,1,12,1,12,1,12,3,12,256,8,12,1,12,5,12,259,8,12,10,12,12,12,
+		262,9,12,1,12,1,12,3,12,266,8,12,1,12,3,12,269,8,12,1,12,3,12,272,8,12,
+		1,13,1,13,1,13,1,13,1,13,1,13,1,13,3,13,281,8,13,1,13,1,13,1,13,3,13,286,
+		8,13,1,13,1,13,1,13,1,13,1,13,1,13,3,13,294,8,13,1,13,1,13,1,13,3,13,299,
+		8,13,1,13,1,13,1,13,1,13,3,13,305,8,13,1,14,1,14,1,15,1,15,1,16,1,16,1,
+		16,1,16,1,17,1,17,1,18,1,18,1,18,1,18,1,19,1,19,1,20,1,20,3,20,325,8,20,
+		1,20,1,20,1,20,1,20,3,20,331,8,20,1,20,5,20,334,8,20,10,20,12,20,337,9,
+		20,1,20,1,20,1,20,1,20,1,20,1,20,3,20,345,8,20,1,20,1,20,1,20,1,20,3,20,
+		351,8,20,1,20,1,20,1,20,1,20,3,20,357,8,20,1,20,1,20,3,20,361,8,20,1,20,
+		1,20,3,20,365,8,20,1,21,1,21,1,21,3,21,370,8,21,1,21,3,21,373,8,21,1,21,
+		1,21,3,21,377,8,21,1,21,3,21,380,8,21,1,21,1,21,1,21,1,21,1,21,3,21,387,
+		8,21,1,21,3,21,390,8,21,1,21,1,21,3,21,394,8,21,1,21,3,21,397,8,21,3,21,
+		399,8,21,1,22,1,22,1,23,1,23,1,24,1,24,1,25,1,25,1,26,1,26,1,27,1,27,1,
+		28,1,28,1,29,1,29,1,30,1,30,1,31,1,31,1,32,1,32,1,33,1,33,1,34,1,34,1,
+		35,1,35,1,36,1,36,1,37,1,37,1,38,1,38,1,38,1,38,1,38,3,38,438,8,38,1,39,
+		1,39,1,39,1,39,1,39,1,39,3,39,446,8,39,1,40,1,40,1,40,1,40,1,40,1,41,5,
+		41,454,8,41,10,41,12,41,457,9,41,1,42,5,42,460,8,42,10,42,12,42,463,9,
+		42,1,42,5,42,466,8,42,10,42,12,42,469,9,42,3,42,471,8,42,1,42,1,461,0,
+		43,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,
+		48,50,52,54,56,58,60,62,64,66,68,70,72,74,76,78,80,82,84,0,6,1,0,26,26,
+		1,0,1,2,2,0,23,23,25,25,1,0,7,17,1,0,17,20,1,0,45,45,497,0,86,1,0,0,0,
+		2,100,1,0,0,0,4,118,1,0,0,0,6,129,1,0,0,0,8,145,1,0,0,0,10,163,1,0,0,0,
+		12,186,1,0,0,0,14,198,1,0,0,0,16,232,1,0,0,0,18,239,1,0,0,0,20,242,1,0,
+		0,0,22,246,1,0,0,0,24,271,1,0,0,0,26,304,1,0,0,0,28,306,1,0,0,0,30,308,
+		1,0,0,0,32,310,1,0,0,0,34,314,1,0,0,0,36,316,1,0,0,0,38,320,1,0,0,0,40,
+		364,1,0,0,0,42,366,1,0,0,0,44,400,1,0,0,0,46,402,1,0,0,0,48,404,1,0,0,
+		0,50,406,1,0,0,0,52,408,1,0,0,0,54,410,1,0,0,0,56,412,1,0,0,0,58,414,1,
+		0,0,0,60,416,1,0,0,0,62,418,1,0,0,0,64,420,1,0,0,0,66,422,1,0,0,0,68,424,
+		1,0,0,0,70,426,1,0,0,0,72,428,1,0,0,0,74,430,1,0,0,0,76,437,1,0,0,0,78,
+		445,1,0,0,0,80,447,1,0,0,0,82,455,1,0,0,0,84,470,1,0,0,0,86,91,5,36,0,
+		0,87,90,3,2,1,0,88,90,3,4,2,0,89,87,1,0,0,0,89,88,1,0,0,0,90,93,1,0,0,
+		0,91,89,1,0,0,0,91,92,1,0,0,0,92,95,1,0,0,0,93,91,1,0,0,0,94,96,5,40,0,
+		0,95,94,1,0,0,0,95,96,1,0,0,0,96,97,1,0,0,0,97,98,5,37,0,0,98,99,5,0,0,
+		1,99,1,1,0,0,0,100,101,5,27,0,0,101,102,5,40,0,0,102,104,3,74,37,0,103,
+		105,5,40,0,0,104,103,1,0,0,0,104,105,1,0,0,0,105,106,1,0,0,0,106,110,5,
+		38,0,0,107,109,3,4,2,0,108,107,1,0,0,0,109,112,1,0,0,0,110,108,1,0,0,0,
+		110,111,1,0,0,0,111,113,1,0,0,0,112,110,1,0,0,0,113,114,5,39,0,0,114,3,
+		1,0,0,0,115,117,5,40,0,0,116,115,1,0,0,0,117,120,1,0,0,0,118,116,1,0,0,
+		0,118,119,1,0,0,0,119,127,1,0,0,0,120,118,1,0,0,0,121,128,3,80,40,0,122,
+		128,3,6,3,0,123,128,3,24,12,0,124,128,3,40,20,0,125,128,3,42,21,0,126,
+		128,5,41,0,0,127,121,1,0,0,0,127,122,1,0,0,0,127,123,1,0,0,0,127,124,1,
+		0,0,0,127,125,1,0,0,0,127,126,1,0,0,0,128,5,1,0,0,0,129,130,5,29,0,0,130,
+		131,5,40,0,0,131,133,3,72,36,0,132,134,5,40,0,0,133,132,1,0,0,0,133,134,
+		1,0,0,0,134,136,1,0,0,0,135,137,3,26,13,0,136,135,1,0,0,0,136,137,1,0,
+		0,0,137,140,1,0,0,0,138,139,5,40,0,0,139,141,3,38,19,0,140,138,1,0,0,0,
+		140,141,1,0,0,0,141,143,1,0,0,0,142,144,3,12,6,0,143,142,1,0,0,0,143,144,
+		1,0,0,0,144,7,1,0,0,0,145,149,5,38,0,0,146,148,3,10,5,0,147,146,1,0,0,
+		0,148,151,1,0,0,0,149,147,1,0,0,0,149,150,1,0,0,0,150,155,1,0,0,0,151,
+		149,1,0,0,0,152,154,5,40,0,0,153,152,1,0,0,0,154,157,1,0,0,0,155,153,1,
+		0,0,0,155,156,1,0,0,0,156,158,1,0,0,0,157,155,1,0,0,0,158,159,5,39,0,0,
+		159,9,1,0,0,0,160,162,5,40,0,0,161,160,1,0,0,0,162,165,1,0,0,0,163,161,
+		1,0,0,0,163,164,1,0,0,0,164,167,1,0,0,0,165,163,1,0,0,0,166,168,3,22,11,
+		0,167,166,1,0,0,0,167,168,1,0,0,0,168,172,1,0,0,0,169,171,3,20,10,0,170,
+		169,1,0,0,0,171,174,1,0,0,0,172,170,1,0,0,0,172,173,1,0,0,0,173,182,1,
+		0,0,0,174,172,1,0,0,0,175,177,3,60,30,0,176,178,5,40,0,0,177,176,1,0,0,
+		0,177,178,1,0,0,0,178,179,1,0,0,0,179,180,3,68,34,0,180,181,5,40,0,0,181,
+		183,1,0,0,0,182,175,1,0,0,0,182,183,1,0,0,0,183,184,1,0,0,0,184,185,3,
+		62,31,0,185,11,1,0,0,0,186,190,5,38,0,0,187,189,3,14,7,0,188,187,1,0,0,
+		0,189,192,1,0,0,0,190,188,1,0,0,0,190,191,1,0,0,0,191,193,1,0,0,0,192,
+		190,1,0,0,0,193,194,5,39,0,0,194,13,1,0,0,0,195,197,5,40,0,0,196,195,1,
+		0,0,0,197,200,1,0,0,0,198,196,1,0,0,0,198,199,1,0,0,0,199,202,1,0,0,0,
+		200,198,1,0,0,0,201,203,3,22,11,0,202,201,1,0,0,0,202,203,1,0,0,0,203,
+		207,1,0,0,0,204,206,3,20,10,0,205,204,1,0,0,0,206,209,1,0,0,0,207,205,
+		1,0,0,0,207,208,1,0,0,0,208,217,1,0,0,0,209,207,1,0,0,0,210,212,3,60,30,
+		0,211,213,5,40,0,0,212,211,1,0,0,0,212,213,1,0,0,0,213,214,1,0,0,0,214,
+		215,3,68,34,0,215,216,5,40,0,0,216,218,1,0,0,0,217,210,1,0,0,0,217,218,
+		1,0,0,0,218,219,1,0,0,0,219,223,3,62,31,0,220,222,5,40,0,0,221,220,1,0,
+		0,0,222,225,1,0,0,0,223,221,1,0,0,0,223,224,1,0,0,0,224,229,1,0,0,0,225,
+		223,1,0,0,0,226,228,3,16,8,0,227,226,1,0,0,0,228,231,1,0,0,0,229,227,1,
+		0,0,0,229,230,1,0,0,0,230,15,1,0,0,0,231,229,1,0,0,0,232,233,5,24,0,0,
+		233,234,3,18,9,0,234,235,5,26,0,0,235,17,1,0,0,0,236,238,8,0,0,0,237,236,
+		1,0,0,0,238,241,1,0,0,0,239,237,1,0,0,0,239,240,1,0,0,0,240,19,1,0,0,0,
+		241,239,1,0,0,0,242,243,5,24,0,0,243,244,3,28,14,0,244,245,5,26,0,0,245,
+		21,1,0,0,0,246,247,7,1,0,0,247,23,1,0,0,0,248,250,5,30,0,0,249,248,1,0,
+		0,0,249,250,1,0,0,0,250,251,1,0,0,0,251,252,5,28,0,0,252,253,5,40,0,0,
+		253,255,3,70,35,0,254,256,5,40,0,0,255,254,1,0,0,0,255,256,1,0,0,0,256,
+		260,1,0,0,0,257,259,3,26,13,0,258,257,1,0,0,0,259,262,1,0,0,0,260,258,
+		1,0,0,0,260,261,1,0,0,0,261,265,1,0,0,0,262,260,1,0,0,0,263,264,5,40,0,
+		0,264,266,3,38,19,0,265,263,1,0,0,0,265,266,1,0,0,0,266,268,1,0,0,0,267,
+		269,3,8,4,0,268,267,1,0,0,0,268,269,1,0,0,0,269,272,1,0,0,0,270,272,3,
+		36,18,0,271,249,1,0,0,0,271,270,1,0,0,0,272,25,1,0,0,0,273,274,5,24,0,
+		0,274,275,3,28,14,0,275,276,5,26,0,0,276,305,1,0,0,0,277,278,5,24,0,0,
+		278,280,3,28,14,0,279,281,5,40,0,0,280,279,1,0,0,0,280,281,1,0,0,0,281,
+		282,1,0,0,0,282,283,5,23,0,0,283,285,3,30,15,0,284,286,5,40,0,0,285,284,
+		1,0,0,0,285,286,1,0,0,0,286,287,1,0,0,0,287,288,5,26,0,0,288,289,5,25,
+		0,0,289,305,1,0,0,0,290,291,5,24,0,0,291,293,3,28,14,0,292,294,5,40,0,
+		0,293,292,1,0,0,0,293,294,1,0,0,0,294,295,1,0,0,0,295,296,5,23,0,0,296,
+		298,3,30,15,0,297,299,5,40,0,0,298,297,1,0,0,0,298,299,1,0,0,0,299,300,
+		1,0,0,0,300,301,5,25,0,0,301,302,5,40,0,0,302,303,5,26,0,0,303,305,1,0,
+		0,0,304,273,1,0,0,0,304,277,1,0,0,0,304,290,1,0,0,0,305,27,1,0,0,0,306,
+		307,3,76,38,0,307,29,1,0,0,0,308,309,3,76,38,0,309,31,1,0,0,0,310,311,
+		5,3,0,0,311,312,3,34,17,0,312,313,5,4,0,0,313,33,1,0,0,0,314,315,3,84,
+		42,0,315,35,1,0,0,0,316,317,5,31,0,0,317,318,5,40,0,0,318,319,3,54,27,
+		0,319,37,1,0,0,0,320,321,5,47,0,0,321,39,1,0,0,0,322,324,3,66,33,0,323,
+		325,5,40,0,0,324,323,1,0,0,0,324,325,1,0,0,0,325,326,1,0,0,0,326,327,5,
+		32,0,0,327,328,5,40,0,0,328,330,3,60,30,0,329,331,5,40,0,0,330,329,1,0,
+		0,0,330,331,1,0,0,0,331,335,1,0,0,0,332,334,3,20,10,0,333,332,1,0,0,0,
+		334,337,1,0,0,0,335,333,1,0,0,0,335,336,1,0,0,0,336,338,1,0,0,0,337,335,
+		1,0,0,0,338,339,3,68,34,0,339,340,5,40,0,0,340,341,3,62,31,0,341,365,1,
+		0,0,0,342,344,3,66,33,0,343,345,5,40,0,0,344,343,1,0,0,0,344,345,1,0,0,
+		0,345,346,1,0,0,0,346,347,5,32,0,0,347,348,5,40,0,0,348,350,3,60,30,0,
+		349,351,5,40,0,0,350,349,1,0,0,0,350,351,1,0,0,0,351,352,1,0,0,0,352,353,
+		3,68,34,0,353,354,5,40,0,0,354,356,3,64,32,0,355,357,5,40,0,0,356,355,
+		1,0,0,0,356,357,1,0,0,0,357,358,1,0,0,0,358,360,5,5,0,0,359,361,5,40,0,
+		0,360,359,1,0,0,0,360,361,1,0,0,0,361,362,1,0,0,0,362,363,5,6,0,0,363,
+		365,1,0,0,0,364,322,1,0,0,0,364,342,1,0,0,0,365,41,1,0,0,0,366,367,3,50,
+		25,0,367,369,5,40,0,0,368,370,3,46,23,0,369,368,1,0,0,0,369,370,1,0,0,
+		0,370,372,1,0,0,0,371,373,5,40,0,0,372,371,1,0,0,0,372,373,1,0,0,0,373,
+		374,1,0,0,0,374,376,3,58,29,0,375,377,5,40,0,0,376,375,1,0,0,0,376,377,
+		1,0,0,0,377,379,1,0,0,0,378,380,3,48,24,0,379,378,1,0,0,0,379,380,1,0,
+		0,0,380,381,1,0,0,0,381,382,5,40,0,0,382,398,3,52,26,0,383,384,5,40,0,
+		0,384,386,5,32,0,0,385,387,3,44,22,0,386,385,1,0,0,0,386,387,1,0,0,0,387,
+		389,1,0,0,0,388,390,5,40,0,0,389,388,1,0,0,0,389,390,1,0,0,0,390,391,1,
+		0,0,0,391,393,3,56,28,0,392,394,5,40,0,0,393,392,1,0,0,0,393,394,1,0,0,
+		0,394,396,1,0,0,0,395,397,3,44,22,0,396,395,1,0,0,0,396,397,1,0,0,0,397,
+		399,1,0,0,0,398,383,1,0,0,0,398,399,1,0,0,0,399,43,1,0,0,0,400,401,7,2,
+		0,0,401,45,1,0,0,0,402,403,5,33,0,0,403,47,1,0,0,0,404,405,5,33,0,0,405,
+		49,1,0,0,0,406,407,3,76,38,0,407,51,1,0,0,0,408,409,3,76,38,0,409,53,1,
+		0,0,0,410,411,5,44,0,0,411,55,1,0,0,0,412,413,3,84,42,0,413,57,1,0,0,0,
+		414,415,7,3,0,0,415,59,1,0,0,0,416,417,7,4,0,0,417,61,1,0,0,0,418,419,
+		3,76,38,0,419,63,1,0,0,0,420,421,3,76,38,0,421,65,1,0,0,0,422,423,3,76,
+		38,0,423,67,1,0,0,0,424,425,3,76,38,0,425,69,1,0,0,0,426,427,5,44,0,0,
+		427,71,1,0,0,0,428,429,5,44,0,0,429,73,1,0,0,0,430,431,3,78,39,0,431,75,
+		1,0,0,0,432,438,5,44,0,0,433,434,5,21,0,0,434,435,5,44,0,0,435,438,5,21,
+		0,0,436,438,5,33,0,0,437,432,1,0,0,0,437,433,1,0,0,0,437,436,1,0,0,0,438,
+		77,1,0,0,0,439,446,3,76,38,0,440,441,3,76,38,0,441,442,5,22,0,0,442,443,
+		3,78,39,0,443,446,1,0,0,0,444,446,5,33,0,0,445,439,1,0,0,0,445,440,1,0,
+		0,0,445,444,1,0,0,0,446,79,1,0,0,0,447,448,5,43,0,0,448,449,5,40,0,0,449,
+		450,3,82,41,0,450,451,5,45,0,0,451,81,1,0,0,0,452,454,8,5,0,0,453,452,
+		1,0,0,0,454,457,1,0,0,0,455,453,1,0,0,0,455,456,1,0,0,0,456,83,1,0,0,0,
+		457,455,1,0,0,0,458,460,9,0,0,0,459,458,1,0,0,0,460,463,1,0,0,0,461,462,
+		1,0,0,0,461,459,1,0,0,0,462,471,1,0,0,0,463,461,1,0,0,0,464,466,5,46,0,
+		0,465,464,1,0,0,0,466,469,1,0,0,0,467,465,1,0,0,0,467,468,1,0,0,0,468,
+		471,1,0,0,0,469,467,1,0,0,0,470,461,1,0,0,0,470,467,1,0,0,0,471,85,1,0,
+		0,0,61,89,91,95,104,110,118,127,133,136,140,143,149,155,163,167,172,177,
+		182,190,198,202,207,212,217,223,229,239,249,255,260,265,268,271,280,285,
+		293,298,304,324,330,335,344,350,356,360,364,369,372,376,379,386,389,393,
+		396,398,437,445,455,461,467,470
 	};
 
 	public static readonly ATN _ATN =

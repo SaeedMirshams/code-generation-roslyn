@@ -13,7 +13,7 @@ internal class Program
         Console.WriteLine("*   To convert specify a .plantUml file or a directory                     *");
         Console.WriteLine("*           To Clean Architecure Solution                                  *");
         Console.WriteLine("****************************************************************************");
-        bool Forced=args.Length > 0&& args.Contains("-f");
+        bool Forced = args.Length > 0 && args.Contains("-f");
 
         var text = File.ReadAllText("model.md");
 
@@ -37,7 +37,124 @@ internal class Program
             foreach (var cls in namespaceDto.Classes)
             {
                 cls.NameSpace = namespaceDto.Name;
-                cls.Forced=Forced;
+                cls.Forced = Forced;
+                var relations = namespaceDto.Relations.FindAll(x => x.From == cls.Name);
+                foreach (var rel in relations)
+                {
+                    var RelatedClass = namespaceDto.Classes.Find(x => x.Name == rel.To);
+                    if (RelatedClass != null)
+                    {
+                        switch (rel.RelationType)
+                        {
+                            case "<-->":
+                            case "-->":
+                            case "--":
+                            case "*--":
+                            case "*-":
+                                break;
+                            case "<|--":
+                            case "--|>":
+                            case "<--":
+                            case "-":
+                            case "--*":
+                            case "-*":
+                            default: continue;
+
+
+                        }
+                        if (rel.MultiplicityTo.Contains("*"))
+                        {
+                            var PName = rel.To + "s";
+                            if (rel.MultiplicityTo.Contains(","))
+                            {
+                                PName = rel.MultiplicityTo.Split(',')[1];
+                            }
+                            cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = "virtual ICollection<" + rel.To + ">", Name = PName });
+                        }
+                        else
+                        {
+                            var PName = rel.To;
+                            if (rel.MultiplicityTo.Contains(","))
+                            {
+                                PName = rel.MultiplicityTo.Split(',')[1];
+                            }
+
+                            cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = RelatedClass.GenericType, Name = PName + "Id" });
+                            cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = rel.To, Name = PName });
+                        }
+                    }
+                    else
+                    {
+                        cls.IsUsingEnums = true;
+                        var PName = rel.To;
+                        if (rel.MultiplicityTo.Contains(","))
+                        {
+                            PName = rel.MultiplicityTo.Split(',')[1];
+                        }
+
+                        cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = rel.To, Name = PName, IsEnumRelated = true });
+                    }
+                }
+                var relationsto = namespaceDto.Relations.FindAll(x => x.To == cls.Name);
+                foreach (var rel in relationsto)
+                {
+                    var RelatedClass = namespaceDto.Classes.Find(x => x.Name == rel.From);
+                    if (RelatedClass != null)
+                    {
+                        switch (rel.RelationType)
+                        {
+                            case "<-->":
+                            case "<--":
+                            case "--":
+                            case "--*":
+                            case "-*":
+                            case "*--":
+                                break;
+
+                            case "<|--":
+                            case "-->":
+                            case "--|>":
+                            case "*-":
+                            case "-":
+                            default: continue;
+                        }
+
+
+                        if (rel.MultiplicityFrom.Contains("*"))
+                        {
+                            var PName = rel.From + "s";
+                            if (rel.MultiplicityFrom.Contains(","))
+                            {
+                                PName = rel.MultiplicityFrom.Split(',')[1];
+                            }
+
+                            cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = "virtual ICollection<" + rel.From + ">", Name = PName });
+                        }
+                        else
+                        {
+                            var PName = rel.From;
+                            if (rel.MultiplicityFrom.Contains(","))
+                            {
+                                PName = rel.MultiplicityFrom.Split(',')[1];
+                            }
+
+                            cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = RelatedClass.GenericType, Name = PName + "Id" });
+                            cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = rel.From, Name = PName });
+                        }
+                    }
+                    else
+                    {
+                        cls.IsUsingEnums = true;
+                        var PName = rel.From;
+                        if (rel.MultiplicityFrom.Contains(","))
+                        {
+                            PName = rel.MultiplicityFrom.Split(',')[1];
+                        }
+
+                        cls.RelationFields.Add(new FieldDto { AccessModifier = "+", FieldType = rel.From, Name = PName, IsEnumRelated = true });
+                    }
+                }
+
                 cls.GenerateEntity();
                 cls.GenerateBriefDtos();
                 cls.GenerateDtos();
@@ -58,12 +175,22 @@ internal class Program
                 cls.GenerateGetWithPaginationQuery();
                 cls.GenerateGetWithPaginationQueryValidator();
 
+                cls.GenerateController();
+
 
                 Console.WriteLine($" {cls.Name}:");
-                foreach (var field in cls.fields)
+                foreach (var field in cls.ExplicitFields)
                 {
                     Console.WriteLine($"  {field.AccessModifier} {field.FieldType} {field.Name};");
                 }
+            }
+
+            foreach (var enumitem in namespaceDto.Enums)
+            {
+                enumitem.NameSpace = namespaceDto.Name;
+                enumitem.Forced = Forced;
+                enumitem.GenerateEnum();
+
             }
 
             Console.WriteLine("---------Relations----------");

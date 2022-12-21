@@ -19,17 +19,20 @@ type_definition
  
 enum_def : ENUM SPACE enum_name SPACE? streotype_def? (SPACE color)? enum_field_def_block? ;
 
-field_def_block : AQOLADBAZ field_def* AQOLADBASTE ;
+field_def_block : AQOLADBAZ field_def* SPACE* AQOLADBASTE ;
 
-field_def : method_field? fieldstreotype* (accessor SPACE? fieldType SPACE)? fieldName ;
+field_def : SPACE* method_field? fieldstreotype* (accessor SPACE? fieldType SPACE)? fieldName ;
 
 
 enum_field_def_block : AQOLADBAZ enum_field_def* AQOLADBASTE ;
 
-enum_field_def : SPACE* method_field? fieldstreotype* (accessor SPACE? fieldType SPACE)? fieldName ;
+enum_field_def : SPACE* method_field? fieldstreotype* (accessor SPACE? fieldType SPACE)? fieldName SPACE* enum_field_streo_type* ;
 
+enum_field_streo_type : DLT enumcomment DGT;
 
-fieldstreotype : '<<' streotypename '>>' ;
+enumcomment : ~(DGT)* ;
+
+fieldstreotype : DLT streotypename DGT ;
 
 method_field: '{method}' 
             | '{field}' 
@@ -40,7 +43,14 @@ class_def : ABSTRACT? CLASS SPACE class_name SPACE? streotype_def* (SPACE color)
           | interface_def
            ;
  
- streotype_def : '<<' streotypename ( SPACE? '<' generic_name SPACE? '>' SPACE? )? '>>' ;
+ streotype_def : DLT streotypename  DGT 
+               | DLT streotypename  SPACE? SLT generic_name SPACE? DGT SGT 
+               | DLT streotypename  SPACE? SLT generic_name SPACE? SGT SPACE DGT ;
+
+ SLT:'<';
+ DLT: SLT SLT;
+ SGT:'>';
+ DGT:SGT SGT;
 
  streotypename :  identifier ;
  
@@ -63,11 +73,12 @@ extrafield : ownerClass SPACE? COLON SPACE accessor SPACE? fieldstreotype* field
 ;
 
 
-relation : from SPACE multiplicity? SPACE? relationType SPACE? multiplicity? SPACE to (SPACE COLON direction? SPACE? linktext SPACE? direction?)? ;
+relation : from SPACE multiplicity_from? SPACE? relationType SPACE? multiplicity_to? SPACE to (SPACE COLON direction? SPACE? linktext SPACE? direction?)? ;
 
 direction: '<' | '>';
 
-multiplicity : STRING ;
+multiplicity_from : STRING ;
+multiplicity_to : STRING ;
 
 from : identifier;
 to : identifier ;
@@ -79,10 +90,12 @@ relationType: '--|>'
             | '--'
             | '<|--'
             | '-->'
+            | '<-->'
             | '<--'
             | '*--'
+            | '--*'
             | '*-'
-            | '--'
+            | '-*'
             | '-'
             ;
 
@@ -185,6 +198,5 @@ somethings : .*?
 
 Unicode : [\p{Letter}] ;
 
-Color : [a-f0-9]+
-      | [A-F0-9]+
+Color : '#' ([a-f0-9]+ | [A-F0-9]+)
 ;

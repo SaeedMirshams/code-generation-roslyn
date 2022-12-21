@@ -1,3 +1,5 @@
+using AntlrPuml.GenerationInfo;
+
 namespace iasco.puml;
 
 public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
@@ -7,6 +9,7 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
     public List<NamespaceDto> NameSpaces => _namespaces;
     internal NamespaceDto CurrentNamespace = new NamespaceDto { Name = "Global" };
     internal ClassDto CurrentClass = null;
+    internal EnumDto CurrentEnum = null;
 
     public override void EnterFile(PlantUMLGrammerParser.FileContext context)
     {
@@ -40,6 +43,44 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
         CurrentNamespace.Classes.Add(cls);
     }
 
+    public override void EnterEnum_def(PlantUMLGrammerParser.Enum_defContext context)
+    {
+        var Name = context.enum_name().GetText();
+        var enumdto = new EnumDto { Name = Name };
+        CurrentEnum = enumdto;
+        CurrentNamespace.Enums.Add(enumdto);
+
+    }
+
+
+    public override void EnterEnum_field_def_block(PlantUMLGrammerParser.Enum_field_def_blockContext context)
+    {
+        if (CurrentEnum == null)
+        {
+            Console.WriteLine("No current class found for Field Def.");
+            return;
+        }
+
+        foreach (var item in context.enum_field_def())
+        {
+
+            if (item.method_field() == null || item.method_field().GetText() == "field")
+            {
+                var field = new EnumFieldDto();
+                field.Name = item.fieldName().GetText();
+                CurrentEnum.Fields.Add(field);
+                foreach (var stt in item.enum_field_streo_type())
+                {
+                    field.StreoTypes.Add(stt.enumcomment().GetText());
+                }
+            }
+            else
+                CurrentEnum.Methods.Add(item.fieldName().GetText());
+
+        }
+
+    }
+
     public override void EnterField_def(PlantUMLGrammerParser.Field_defContext context)
     {
 
@@ -56,7 +97,7 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
             field.StreoTypes.Add(item.streotypename().GetText());
         }
         if (CurrentClass != null)
-            CurrentClass.fields.Add(field);
+            CurrentClass.ExplicitFields.Add(field);
         else
         {
             Console.WriteLine("No current class found for Field Def.");
@@ -70,29 +111,27 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
         var To = context.to().GetText();
         AddClass(From);
         AddClass(To);
-        var typ = context.relationType().GetText();
-        var RelationType = "";
-        switch (typ)
-        {
-            case "--|>":
-                (From, To) = (To, From);
-                RelationType = "Inheritance";
-                break;
-            case "<|--":
-                RelationType = "Inheritance";
-                break;
 
-            default:
-                RelationType = typ;
-                break;
-        }
-        CurrentNamespace.Relations.Add(new RelationDto { From = From, To = To, RelationType = RelationType, Multiplicity = "unknown" });
+        var typ = context.relationType().GetText();
+        var RelationType = typ;
+
+        var MultiplicityFrom = context.multiplicity_from() != null ? context.multiplicity_from().GetText() : "1";
+        var MultiplicityTo = context.multiplicity_to() != null ? context.multiplicity_to().GetText() : "1";
+        CurrentNamespace.Relations.Add(new RelationDto
+        {
+            From = From,
+            To = To,
+            RelationType = RelationType,
+            MultiplicityFrom = MultiplicityFrom.Replace("\"", ""),
+            MultiplicityTo = MultiplicityTo.Replace("\"", "")
+        });
     }
 
     private ClassDto AddClass(string ClassName)
     {
         var clas = CurrentNamespace.Classes.Find(x => x.Name.Equals(ClassName));
-        if (clas == null)
+        var enu = CurrentNamespace.Enums.Find(x => x.Name.Equals(ClassName));
+        if (clas == null && enu == null)
         {
             clas = new ClassDto();
             clas.Name = ClassName;
@@ -114,7 +153,7 @@ public sealed class PlantUMlGrammerListener : PlantUMLGrammerBaseListener
             fld.StreoTypes.Add(item.streotypename().GetText());
 
         }
-        clas.fields.Add(fld);
+        clas.ExplicitFields.Add(fld);
 
     }
 
