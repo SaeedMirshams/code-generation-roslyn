@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DTOs\**" />
+    <EmbeddedResource Remove="DTOs\**" />
+    <None Remove="DTOs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IASC.Core" Version="1.0.0.12" />
+    <PackageReference Include="IASC.Core.Application" Version="1.0.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IASC.Sample.Domain\IASC.Sample.Domain.csproj" />
+    <ProjectReference Include="..\IASC.Sample.Infrastructure\IASC.Sample.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IASC.Core" Version="1.0.0.12" />
+    <PackageReference Include="IASC.Core.WebApi" Version="1.0.0.12" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.10">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IASC.Sample.Application\IASC.Sample.Application.csproj" />
+    <ProjectReference Include="..\IASC.Sample.Domain\IASC.Sample.Domain.csproj" />
+    <ProjectReference Include="..\IASC.Sample.Infrastructure\IASC.Sample.Infrastructure.csproj" />
+	
+  </ItemGroup>
+
+</Project>
